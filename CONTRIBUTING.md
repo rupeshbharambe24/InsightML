@@ -22,7 +22,7 @@ everything you need to get started.
 1. Fork the repository on GitHub and clone your fork:
 
    ```bash
-   git clone https://github.com/<your-username>/InsightML.git
+   git clone https://github.com/rupeshbharambe24/InsightML.git
    cd InsightML
    ```
 

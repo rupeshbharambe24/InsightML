@@ -3,9 +3,9 @@
 # InsightML
 
 [![PyPI version](https://img.shields.io/pypi/v/insightml)](https://pypi.org/project/insightml/)
-[![Python versions](https://img.shields.io/pypi/pyversions/insightml)](https://pypi.org/project/insightml/)
+[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/rupeshbharambe24/InsightML)
 [![CI](https://github.com/rupeshbharambe24/InsightML/actions/workflows/ci.yml/badge.svg)](https://github.com/rupeshbharambe24/InsightML/actions/workflows/ci.yml)
-[![License](https://img.shields.io/pypi/l/insightml)](https://github.com/rupeshbharambe24/InsightML/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/rupeshbharambe24/InsightML/blob/master/LICENSE)
 
 **The missing middle layer between EDA and AutoML.**
 
