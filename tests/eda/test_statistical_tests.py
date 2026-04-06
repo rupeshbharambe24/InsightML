@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 
-from insightml.eda.statistical_tests import StatisticalTests
+from dissectml.eda.statistical_tests import StatisticalTests
 
 
 def test_normality_normal_data():

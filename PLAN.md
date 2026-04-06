@@ -10,8 +10,8 @@
 
 | Decision | Choice | Rationale |
 |---|---|---|
-| Package name (PyPI) | `insightml` | Clean, readable, matches "InsightML" |
-| Import name | `insightml` | `import insightml as iml` |
+| Package name (PyPI) | `dissectml` | Clean, readable, matches "InsightML" |
+| Import name | `dissectml` | `import dissectml as iml` |
 | Python environment | Dedicated `.venv` in project | Shared D:\commonenv has NumPy/SciPy conflict |
 | Python version | `>=3.10` | Needed for `match`, `X \| Y` union types |
 | Build system | hatchling (src-layout) | Modern, clean, no setup.py needed |
@@ -59,7 +59,7 @@ D:\Projects\insightML\
 ├── .pre-commit-config.yaml
 │
 ├── src/
-│   └── insightml/                     # The installable package
+│   └── dissectml/                     # The installable package
 │       ├── __init__.py                # Public API: analyze(), explore(), battle()
 │       ├── _version.py                # __version__ = "0.1.0"
 │       ├── _types.py                  # Enums, TypedDicts, type aliases
@@ -212,7 +212,7 @@ D:\Projects\insightML\
 ### 3.1 Dream API
 
 ```python
-import insightml as iml
+import dissectml as iml
 
 # === Full pipeline (3 lines) ===
 report = iml.analyze(data="dataset.csv", target="price", task="regression")
@@ -1081,7 +1081,7 @@ Side-by-side summary plots for top-N models. Feature importance ranking comparis
 
 ### 12.1 HTML Report (`html_renderer.py`)
 
-- **Jinja2** templates via `PackageLoader("insightml", "report/templates")`
+- **Jinja2** templates via `PackageLoader("dissectml", "report/templates")`
 - **Single self-contained HTML file**: CSS inlined in `<style>`, Plotly.js from CDN (option `inline_plotly=True` for offline)
 - **Sections**: Executive Summary, EDA Findings, Pre-Model Intelligence, Model Comparison, Detailed Analysis, Recommendations
 - **Collapsible**: `<details>/<summary>` with JS enhancement
@@ -1102,7 +1102,7 @@ Template-driven (no LLM dependency):
 
 ### 12.3 PDF Export (`pdf_renderer.py`) — Optional
 
-Requires `pip install insightml[report]` (weasyprint + kaleido). Renders HTML to PDF with static chart images. Falls back gracefully with clear install instructions.
+Requires `pip install dissectml[report]` (weasyprint + kaleido). Renders HTML to PDF with static chart images. Falls back gracefully with clear install instructions.
 
 ### 12.4 Jupyter Integration (`viz/display.py`)
 
@@ -1132,7 +1132,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "insightml"
+name = "dissectml"
 dynamic = ["version"]
 description = "The missing middle layer between EDA and AutoML — deep data understanding meets model comparison"
 readme = "README.md"
@@ -1169,9 +1169,9 @@ boost = ["xgboost>=2.0", "lightgbm>=4.0", "catboost>=1.2"]
 explain = ["shap>=0.44"]
 report = ["weasyprint>=60.0", "kaleido>=0.2"]
 scale = ["polars>=0.20", "optuna>=3.4"]
-full = ["insightml[boost,explain,report,scale]"]
+full = ["dissectml[boost,explain,report,scale]"]
 dev = [
-    "insightml[full]",
+    "dissectml[full]",
     "pytest>=8.0",
     "pytest-cov>=4.0",
     "pytest-xdist>=3.5",
@@ -1184,15 +1184,15 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/rupeshbharambe/insightml"
-Documentation = "https://insightml.readthedocs.io"
-Repository = "https://github.com/rupeshbharambe/insightml"
+Homepage = "https://github.com/rupeshbharambe/dissectml"
+Documentation = "https://dissectml.readthedocs.io"
+Repository = "https://github.com/rupeshbharambe/dissectml"
 
 [tool.hatch.version]
-path = "src/insightml/_version.py"
+path = "src/dissectml/_version.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/insightml"]
+packages = ["src/dissectml"]
 
 [tool.ruff]
 target-version = "py310"
@@ -1204,7 +1204,7 @@ select = ["E", "F", "W", "I", "UP", "B", "SIM"]
 
 [tool.mypy]
 python_version = "3.10"
-packages = ["insightml"]
+packages = ["dissectml"]
 warn_return_any = true
 warn_unused_configs = true
 
@@ -1282,24 +1282,24 @@ class SmartSampler:
 - [ ] Init git repo, `.gitignore`
 - [ ] `pyproject.toml` with all deps/groups
 - [ ] Create `.venv`, install in editable mode
-- [ ] `src/insightml/__init__.py` — stub `analyze()`, `explore()`, `battle()`
-- [ ] `src/insightml/_version.py` — `__version__ = "0.1.0"`
-- [ ] `src/insightml/_types.py` — all enums + TypedDicts
-- [ ] `src/insightml/_config.py` — InsightMLConfig + get/set/context
-- [ ] `src/insightml/_lazy.py` — optional dependency guard
-- [ ] `src/insightml/_io.py` — file loading (CSV, Excel, Parquet, JSON)
-- [ ] `src/insightml/_sampling.py` — SmartSampler
-- [ ] `src/insightml/exceptions.py` — full exception hierarchy
-- [ ] `src/insightml/core/base.py` — BaseStage, StageResult, PipelineContext
-- [ ] `src/insightml/core/data_container.py` — DataContainer + from_input()
-- [ ] `src/insightml/core/validators.py` — input validation + task inference
-- [ ] `src/insightml/core/progress.py` — ProgressTracker
-- [ ] `src/insightml/viz/theme.py` — Plotly theme
-- [ ] `src/insightml/viz/charts.py` — chart factory stubs
-- [ ] `src/insightml/viz/display.py` — env detection + _repr_html_ mixin
-- [ ] `src/insightml/eda/_base.py` — BaseAnalysisModule ABC
+- [ ] `src/dissectml/__init__.py` — stub `analyze()`, `explore()`, `battle()`
+- [ ] `src/dissectml/_version.py` — `__version__ = "0.1.0"`
+- [ ] `src/dissectml/_types.py` — all enums + TypedDicts
+- [ ] `src/dissectml/_config.py` — InsightMLConfig + get/set/context
+- [ ] `src/dissectml/_lazy.py` — optional dependency guard
+- [ ] `src/dissectml/_io.py` — file loading (CSV, Excel, Parquet, JSON)
+- [ ] `src/dissectml/_sampling.py` — SmartSampler
+- [ ] `src/dissectml/exceptions.py` — full exception hierarchy
+- [ ] `src/dissectml/core/base.py` — BaseStage, StageResult, PipelineContext
+- [ ] `src/dissectml/core/data_container.py` — DataContainer + from_input()
+- [ ] `src/dissectml/core/validators.py` — input validation + task inference
+- [ ] `src/dissectml/core/progress.py` — ProgressTracker
+- [ ] `src/dissectml/viz/theme.py` — Plotly theme
+- [ ] `src/dissectml/viz/charts.py` — chart factory stubs
+- [ ] `src/dissectml/viz/display.py` — env detection + _repr_html_ mixin
+- [ ] `src/dissectml/eda/_base.py` — BaseAnalysisModule ABC
 - [ ] `tests/conftest.py` — shared fixtures (synthetic DataFrames)
-- [ ] Verify: `pip install -e .` works, `import insightml` works
+- [ ] Verify: `pip install -e .` works, `import dissectml` works
 
 ### Phase 1: Deep EDA — v0.1 (~3-4 sessions)
 
@@ -1413,7 +1413,7 @@ def edge_case_df():
 ### Verification Checklist
 
 - [ ] `pip install -e .` works in clean `.venv`
-- [ ] `import insightml as iml` works
+- [ ] `import dissectml as iml` works
 - [ ] `iml.explore(df)` returns `EDAResult` with all sub-modules accessible
 - [ ] `iml.explore(df).show()` renders in Jupyter
 - [ ] `iml.explore(df).correlations.heatmap()` returns interactive Plotly figure

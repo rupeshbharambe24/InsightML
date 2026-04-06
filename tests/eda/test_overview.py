@@ -1,8 +1,8 @@
 """Tests for DataOverview."""
 import pandas as pd
 
-from insightml._types import ColumnType
-from insightml.eda.overview import DataOverview
+from dissectml._types import ColumnType
+from dissectml.eda.overview import DataOverview
 
 
 def test_basic_shape(df_classification):

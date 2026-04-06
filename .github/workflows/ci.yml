@@ -55,7 +55,7 @@ jobs:
             --ignore=tests/integration \
             -x -q \
             --tb=short \
-            --cov=insightml \
+            --cov=dissectml \
             --cov-report=term-missing
 
   test-boost:
@@ -90,7 +90,7 @@ jobs:
         run: |
           pytest tests/ \
             --ignore=tests/integration \
-            --cov=insightml \
+            --cov=dissectml \
             --cov-report=xml \
             -q
       - name: Upload to Codecov

@@ -116,5 +116,5 @@ def df_all_types() -> pd.DataFrame:
 @pytest.fixture
 def default_config():
     """Return a fresh default InsightMLConfig."""
-    from insightml._config import InsightMLConfig
+    from dissectml._config import InsightMLConfig
     return InsightMLConfig()

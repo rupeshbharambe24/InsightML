@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from insightml.battle.result import BattleResult, ModelScore
-from insightml.battle.runner import BattleRunner
+from dissectml.battle.result import BattleResult, ModelScore
+from dissectml.battle.runner import BattleRunner
 
 
 @pytest.fixture

@@ -6,7 +6,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import pytest
 
-from insightml.viz.charts import (
+from dissectml.viz.charts import (
     box_plot,
     frequency_bar,
     gauge,

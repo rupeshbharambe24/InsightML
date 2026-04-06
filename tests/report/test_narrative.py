@@ -1,4 +1,4 @@
-"""Additional / different tests for insightml.report.narrative.
+"""Additional / different tests for dissectml.report.narrative.
 
 test_html_renderer.py::TestNarrative already covers:
   - executive_summary returns str, contains sample count + best model
@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import pytest
 
-from insightml.report.narrative import (
+from dissectml.report.narrative import (
     data_recommendations,
     ensemble_recommendation,
     executive_summary,

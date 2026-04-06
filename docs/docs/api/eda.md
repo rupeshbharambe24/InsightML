@@ -2,37 +2,37 @@
 
 ## explore()
 
-::: insightml.eda.result.explore
+::: dissectml.eda.result.explore
 
 ## EDAResult
 
-::: insightml.eda.result.EDAResult
+::: dissectml.eda.result.EDAResult
 
 ## Sub-modules
 
 ### Overview
-::: insightml.eda.overview.OverviewAnalysis
+::: dissectml.eda.overview.OverviewAnalysis
 
 ### Univariate
-::: insightml.eda.univariate.UnivariateAnalysis
+::: dissectml.eda.univariate.UnivariateAnalysis
 
 ### Bivariate
-::: insightml.eda.bivariate.BivariateAnalysis
+::: dissectml.eda.bivariate.BivariateAnalysis
 
 ### Correlations
-::: insightml.eda.correlations.CorrelationAnalysis
+::: dissectml.eda.correlations.CorrelationAnalysis
 
 ### Missing Data
-::: insightml.eda.missing.MissingAnalysis
+::: dissectml.eda.missing.MissingAnalysis
 
 ### Outliers
-::: insightml.eda.outliers.OutlierAnalysis
+::: dissectml.eda.outliers.OutlierAnalysis
 
 ### Statistical Tests
-::: insightml.eda.statistical_tests.StatisticalTestsAnalysis
+::: dissectml.eda.statistical_tests.StatisticalTestsAnalysis
 
 ### Clusters
-::: insightml.eda.clusters.ClusterAnalysis
+::: dissectml.eda.clusters.ClusterAnalysis
 
 ### Interactions
-::: insightml.eda.interactions.InteractionAnalysis
+::: dissectml.eda.interactions.InteractionAnalysis

@@ -2,24 +2,24 @@
 
 ## battle()
 
-::: insightml.battle.battle
+::: dissectml.battle.battle
 
 ## BattleRunner
 
-::: insightml.battle.runner.BattleRunner
+::: dissectml.battle.runner.BattleRunner
 
 ## BattleResult
 
-::: insightml.battle.result.BattleResult
+::: dissectml.battle.result.BattleResult
 
 ## ModelScore
 
-::: insightml.battle.result.ModelScore
+::: dissectml.battle.result.ModelScore
 
 ## Model Registry
 
-::: insightml.battle.registry.ModelRegistry
+::: dissectml.battle.registry.ModelRegistry
 
 ## Model Tuner
 
-::: insightml.battle.tuner.ModelTuner
+::: dissectml.battle.tuner.ModelTuner

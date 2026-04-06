@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
-from insightml.compare.curves import (
+from dissectml.compare.curves import (
     actual_vs_predicted,
     confusion_matrices,
     metric_bar_chart,
@@ -20,7 +20,7 @@ from insightml.compare.curves import (
 # ---------------------------------------------------------------------------
 
 def _make_clf_result(n=100):
-    from insightml.battle.result import BattleResult, ModelScore
+    from dissectml.battle.result import BattleResult, ModelScore
 
     rng = np.random.default_rng(42)
     y = rng.choice([0, 1], n)
@@ -48,7 +48,7 @@ def _make_clf_result(n=100):
 
 
 def _make_reg_result(n=100):
-    from insightml.battle.result import BattleResult, ModelScore
+    from dissectml.battle.result import BattleResult, ModelScore
 
     rng = np.random.default_rng(0)
     y = rng.normal(0, 1, n)

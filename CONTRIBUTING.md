@@ -129,7 +129,7 @@ Before opening an issue, please:
 1. Search existing issues to avoid duplicates.
 2. Use the appropriate issue template (bug report or feature request).
 3. Include a minimal reproducible example when reporting bugs.
-4. Specify your environment: OS, Python version, and `insightml` version.
+4. Specify your environment: OS, Python version, and `dissectml` version.
 
 ## Code of Conduct
 

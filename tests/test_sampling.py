@@ -1,12 +1,12 @@
-"""Tests for insightml._sampling — smart sampling strategies."""
+"""Tests for dissectml._sampling — smart sampling strategies."""
 
 from __future__ import annotations
 
 import numpy as np
 import pandas as pd
 
-from insightml._config import InsightMLConfig
-from insightml._sampling import smart_sample
+from dissectml._config import InsightMLConfig
+from dissectml._sampling import smart_sample
 
 # ---------------------------------------------------------------------------
 # Helpers

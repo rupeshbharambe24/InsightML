@@ -29,15 +29,15 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
-from insightml.compare.comparator import ModelComparator
-from insightml.compare.metrics_table import ComparisonTable
+from dissectml.compare.comparator import ModelComparator
+from dissectml.compare.metrics_table import ComparisonTable
 
 # ---------------------------------------------------------------------------
 # Shared helpers
 # ---------------------------------------------------------------------------
 
 def _make_clf_result(n=100):
-    from insightml.battle.result import BattleResult, ModelScore
+    from dissectml.battle.result import BattleResult, ModelScore
 
     rng = np.random.default_rng(42)
     y = rng.choice([0, 1], n)
@@ -65,7 +65,7 @@ def _make_clf_result(n=100):
 
 
 def _make_reg_result(n=100):
-    from insightml.battle.result import BattleResult, ModelScore
+    from dissectml.battle.result import BattleResult, ModelScore
 
     rng = np.random.default_rng(0)
     y = rng.normal(0, 1, n)

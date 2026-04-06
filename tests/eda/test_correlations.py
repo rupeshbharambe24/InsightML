@@ -1,7 +1,7 @@
 """Tests for CorrelationAnalysis."""
 import numpy as np
 
-from insightml.eda.correlations import CorrelationAnalysis
+from dissectml.eda.correlations import CorrelationAnalysis
 
 
 def test_pearson_matrix_shape(df_regression):

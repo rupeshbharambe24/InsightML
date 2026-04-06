@@ -1,4 +1,4 @@
-"""Tests for insightml.intelligence.feature_importance."""
+"""Tests for dissectml.intelligence.feature_importance."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from insightml.intelligence.feature_importance import compute_feature_importance
+from dissectml.intelligence.feature_importance import compute_feature_importance
 
 # ---------------------------------------------------------------------------
 # Helpers

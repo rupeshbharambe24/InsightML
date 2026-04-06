@@ -2,24 +2,24 @@
 
 ## analyze_intelligence()
 
-::: insightml.intelligence.analyze_intelligence
+::: dissectml.intelligence.analyze_intelligence
 
 ## Leakage Detection
 
-::: insightml.intelligence.leakage
+::: dissectml.intelligence.leakage
 
 ## Multicollinearity
 
-::: insightml.intelligence.multicollinearity
+::: dissectml.intelligence.multicollinearity
 
 ## Feature Importance
 
-::: insightml.intelligence.feature_importance
+::: dissectml.intelligence.feature_importance
 
 ## Data Readiness
 
-::: insightml.intelligence.readiness
+::: dissectml.intelligence.readiness
 
 ## Recommendations
 
-::: insightml.intelligence.recommendations
+::: dissectml.intelligence.recommendations

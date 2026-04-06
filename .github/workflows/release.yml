@@ -52,7 +52,7 @@ jobs:
         run: pip install dist/*.whl
 
       - name: Verify import
-        run: python -c "import insightml; print(insightml.__version__)"
+        run: python -c "import dissectml; print(dissectml.__version__)"
 
   publish-pypi:
     name: Publish to PyPI

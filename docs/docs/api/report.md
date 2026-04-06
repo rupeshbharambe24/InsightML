@@ -2,16 +2,16 @@
 
 ## AnalysisReport
 
-::: insightml.report.builder.AnalysisReport
+::: dissectml.report.builder.AnalysisReport
 
 ## HTML Renderer
 
-::: insightml.report.html_renderer
+::: dissectml.report.html_renderer
 
 ## PDF Renderer
 
-::: insightml.report.pdf_renderer
+::: dissectml.report.pdf_renderer
 
 ## Narrative
 
-::: insightml.report.narrative
+::: dissectml.report.narrative

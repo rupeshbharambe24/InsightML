@@ -1,7 +1,7 @@
 """Tests for ClusterDiscovery."""
 import pandas as pd
 
-from insightml.eda.clusters import ClusterDiscovery
+from dissectml.eda.clusters import ClusterDiscovery
 
 
 def test_kmeans_finds_clusters(df_classification):

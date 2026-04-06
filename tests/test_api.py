@@ -1,4 +1,4 @@
-"""Tests for the top-level insightml public API.
+"""Tests for the top-level dissectml public API.
 
 Covers attribute presence, types, callability, and lightweight
 end-to-end smoke tests that do not require a full battle run.
@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-import insightml as iml
+import dissectml as iml
 
 # ---------------------------------------------------------------------------
 # Shared fixture
@@ -34,7 +34,7 @@ def small_df():
 
 class TestModuleAttributes:
     def test_import_succeeds(self):
-        # If we reach this point insightml imported cleanly above.
+        # If we reach this point dissectml imported cleanly above.
         assert iml is not None
 
     def test_version_is_string(self):

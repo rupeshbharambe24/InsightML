@@ -15,7 +15,7 @@ A clear description of the problem. Example: "I'm always frustrated when [...]"
 A clear description of what you want to happen. Include example API usage if possible:
 
 ```python
-import insightml as iml
+import dissectml as iml
 # How you'd like the feature to work
 ```
 

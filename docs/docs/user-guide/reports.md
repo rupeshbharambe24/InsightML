@@ -15,7 +15,7 @@ report.export("report.html")   # Returns absolute path
 report.show("report.html")
 
 # Get HTML string (e.g. to embed in a web app)
-from insightml.report.html_renderer import render_html_report
+from dissectml.report.html_renderer import render_html_report
 html = render_html_report(report)
 ```
 
@@ -43,11 +43,11 @@ report.models    # Renders leaderboard table
 Requires WeasyPrint:
 
 ```bash
-pip install insightml[report]
+pip install dissectml[report]
 ```
 
 ```python
-from insightml.report.pdf_renderer import export_pdf
+from dissectml.report.pdf_renderer import export_pdf
 
 export_pdf(report, "report.pdf")
 ```

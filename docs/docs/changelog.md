@@ -5,7 +5,7 @@
 ### Added
 - `_compat.py` — `to_pandas()` conversion layer (accepts Polars DataFrames, file paths, dicts)
 - `datasets/` — built-in `load_titanic()` and `load_housing()` demo datasets
-- `report/pdf_renderer.py` — optional PDF export via WeasyPrint (requires `insightml[report]`)
+- `report/pdf_renderer.py` — optional PDF export via WeasyPrint (requires `dissectml[report]`)
 - GitHub Actions CI/CD workflows (`.github/workflows/ci.yml`, `release.yml`)
 - MkDocs Material documentation site
 

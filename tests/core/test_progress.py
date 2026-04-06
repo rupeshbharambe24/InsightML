@@ -1,8 +1,8 @@
-"""Tests for insightml.core.progress — ProgressTracker."""
+"""Tests for dissectml.core.progress — ProgressTracker."""
 
 from __future__ import annotations
 
-from insightml.core.progress import ProgressTracker
+from dissectml.core.progress import ProgressTracker
 
 # ---------------------------------------------------------------------------
 # __init__

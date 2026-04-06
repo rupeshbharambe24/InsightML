@@ -6,7 +6,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import pytest
 
-from insightml.eda.result import EDAResult
+from dissectml.eda.result import EDAResult
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -38,7 +38,7 @@ def bivariate(eda_result):
 # ---------------------------------------------------------------------------
 
 def test_bivariate_returns_object(eda_result):
-    from insightml.eda.bivariate import BivariateAnalysis
+    from dissectml.eda.bivariate import BivariateAnalysis
     assert isinstance(eda_result.bivariate, BivariateAnalysis)
 
 

@@ -2,8 +2,8 @@
 
 import pytest
 
-from insightml.battle.catalog import MODEL_CATALOG, ModelEntry, get_classifiers, get_regressors
-from insightml.battle.registry import ModelRegistry, get_registry
+from dissectml.battle.catalog import MODEL_CATALOG, ModelEntry, get_classifiers, get_regressors
+from dissectml.battle.registry import ModelRegistry, get_registry
 
 
 class TestModelEntry:

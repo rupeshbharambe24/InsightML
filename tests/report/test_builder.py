@@ -1,4 +1,4 @@
-"""Additional tests for insightml.report.builder.AnalysisReport.
+"""Additional tests for dissectml.report.builder.AnalysisReport.
 
 test_html_renderer.py already covers basic export/repr/summary via
 TestAnalysisReport.  These tests focus on attribute initialisation,
@@ -11,7 +11,7 @@ from pathlib import Path
 
 import pytest
 
-from insightml.report.builder import AnalysisReport
+from dissectml.report.builder import AnalysisReport
 
 # ---------------------------------------------------------------------------
 # Construction and attribute access

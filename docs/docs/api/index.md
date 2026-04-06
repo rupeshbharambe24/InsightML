@@ -1,6 +1,6 @@
 # API Reference
 
-::: insightml
+::: dissectml
     options:
       show_root_heading: true
       members:

@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from insightml.eda.target_analysis import TargetAnalysis
+from dissectml.eda.target_analysis import TargetAnalysis
 
 
 def test_classification_balance(df_classification):

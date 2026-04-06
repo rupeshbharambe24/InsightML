@@ -14,11 +14,11 @@ A clear and concise description of what the bug is.
 
 Steps to reproduce the behavior:
 
-1. Install insightml version X
+1. Install dissectml version X
 2. Run this code:
 
 ```python
-import insightml as iml
+import dissectml as iml
 # minimal reproduction code here
 ```
 
@@ -38,8 +38,8 @@ Paste the full traceback or error message here.
 
 - OS: [e.g., Windows 11, Ubuntu 22.04, macOS 14]
 - Python version: [e.g., 3.11.3]
-- insightml version: [e.g., 0.1.0]
-- Installation method: [e.g., pip install insightml, pip install insightml[full]]
+- dissectml version: [e.g., 0.1.0]
+- Installation method: [e.g., pip install dissectml, pip install dissectml[full]]
 
 ## Additional Context
 

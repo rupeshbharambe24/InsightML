@@ -1,11 +1,11 @@
-"""Tests for insightml.intelligence.multicollinearity."""
+"""Tests for dissectml.intelligence.multicollinearity."""
 
 from __future__ import annotations
 
 import numpy as np
 import pandas as pd
 
-from insightml.intelligence.multicollinearity import (
+from dissectml.intelligence.multicollinearity import (
     compute_condition_number,
     compute_vif,
     removal_recommendations,

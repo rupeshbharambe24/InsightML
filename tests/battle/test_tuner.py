@@ -1,4 +1,4 @@
-"""Tests for insightml.battle.tuner.ModelTuner."""
+"""Tests for dissectml.battle.tuner.ModelTuner."""
 
 from __future__ import annotations
 
@@ -6,8 +6,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from insightml.battle.result import BattleResult, ModelScore
-from insightml.battle.tuner import ModelTuner
+from dissectml.battle.result import BattleResult, ModelScore
+from dissectml.battle.tuner import ModelTuner
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -128,7 +128,7 @@ class TestModelTunerQuickMode:
 
     def test_quick_mode_with_plan_arg(self):
         """quick mode should ignore the plan argument and still return unchanged result."""
-        from insightml.battle.preprocessing import build_preprocessing_plan
+        from dissectml.battle.preprocessing import build_preprocessing_plan
         result, X, y = _make_clf_battle()
         plan = build_preprocessing_plan(X, target=None, eda_result=None)
         tuner = ModelTuner(mode="quick")
@@ -163,7 +163,7 @@ class TestModelTunerTunedMode:
 
     def test_tuned_mode_with_explicit_plan(self):
         """Passing an explicit PreprocessingPlan should not raise."""
-        from insightml.battle.preprocessing import build_preprocessing_plan
+        from dissectml.battle.preprocessing import build_preprocessing_plan
         result, X, y = _make_clf_battle()
         plan = build_preprocessing_plan(X, target=None, eda_result=None)
         tuner = ModelTuner(mode="tuned", n_iter=2, cv=2)

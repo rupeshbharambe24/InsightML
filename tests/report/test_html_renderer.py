@@ -7,9 +7,9 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from insightml.report.builder import AnalysisReport
-from insightml.report.html_renderer import render_html_report
-from insightml.report.narrative import (
+from dissectml.report.builder import AnalysisReport
+from dissectml.report.html_renderer import render_html_report
+from dissectml.report.narrative import (
     data_recommendations,
     ensemble_recommendation,
     executive_summary,
@@ -166,7 +166,7 @@ class TestAnalysisReport:
 
 class TestAnalyzeIntegration:
     def test_analyze_returns_report(self, clf_df):
-        import insightml as iml
+        import dissectml as iml
         report = iml.analyze(
             clf_df, target="target",
             task="classification",
@@ -178,7 +178,7 @@ class TestAnalyzeIntegration:
         assert report.task == "classification"
 
     def test_analyze_has_eda(self, clf_df):
-        import insightml as iml
+        import dissectml as iml
         report = iml.analyze(
             clf_df, target="target",
             battle_families=["linear"], cv=3, n_jobs=1,
@@ -186,8 +186,8 @@ class TestAnalyzeIntegration:
         assert report.eda is not None
 
     def test_analyze_has_models(self, clf_df):
-        import insightml as iml
-        from insightml.battle.result import BattleResult
+        import dissectml as iml
+        from dissectml.battle.result import BattleResult
         report = iml.analyze(
             clf_df, target="target",
             battle_families=["linear"], cv=3, n_jobs=1,
@@ -196,8 +196,8 @@ class TestAnalyzeIntegration:
         assert report.models.best is not None
 
     def test_analyze_has_compare(self, clf_df):
-        import insightml as iml
-        from insightml.compare.comparator import ModelComparator
+        import dissectml as iml
+        from dissectml.compare.comparator import ModelComparator
         report = iml.analyze(
             clf_df, target="target",
             battle_families=["linear"], cv=3, n_jobs=1,
@@ -205,7 +205,7 @@ class TestAnalyzeIntegration:
         assert isinstance(report.compare, ModelComparator)
 
     def test_analyze_export_works(self, clf_df):
-        import insightml as iml
+        import dissectml as iml
         report = iml.analyze(
             clf_df, target="target",
             battle_families=["linear"], cv=3, n_jobs=1,
@@ -218,13 +218,13 @@ class TestAnalyzeIntegration:
             assert "<!DOCTYPE html>" in content
 
     def test_analyze_no_battle(self, clf_df):
-        import insightml as iml
+        import dissectml as iml
         report = iml.analyze(clf_df, target="target", run_battle=False)
         assert report.models is None
         assert report.eda is not None
         assert report.intelligence is not None
 
     def test_analyze_wrong_target_raises(self, clf_df):
-        import insightml as iml
+        import dissectml as iml
         with pytest.raises(KeyError):
             iml.analyze(clf_df, target="nonexistent")

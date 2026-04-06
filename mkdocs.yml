@@ -1,6 +1,6 @@
 site_name: InsightML
 site_description: The missing middle layer between EDA and AutoML
-site_url: https://insightml.readthedocs.io
+site_url: https://dissectml.readthedocs.io
 repo_url: https://github.com/rupeshbharambe24/InsightML
 repo_name: insightML
 edit_uri: edit/main/docs/docs/
@@ -65,7 +65,7 @@ nav:
       - Comparative Analysis: user-guide/compare.md
       - HTML Reports: user-guide/reports.md
   - API Reference:
-      - insightml: api/index.md
+      - dissectml: api/index.md
       - EDA: api/eda.md
       - Battle: api/battle.md
       - Intelligence: api/intelligence.md
@@ -78,4 +78,4 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/rupeshbharambe24/InsightML
     - icon: fontawesome/brands/python
-      link: https://pypi.org/project/insightml/
+      link: https://pypi.org/project/dissectml/

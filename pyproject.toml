@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "insightml"
+name = "dissectml"
 dynamic = ["version"]
 description = "The missing middle layer between EDA and AutoML — deep data understanding meets model comparison"
 readme = "README.md"
@@ -40,9 +40,9 @@ boost = ["xgboost>=2.0", "lightgbm>=4.0", "catboost>=1.2"]
 explain = ["shap>=0.44"]
 report = ["weasyprint>=60.0", "kaleido>=0.2"]
 scale = ["polars>=0.20", "optuna>=3.4"]
-full = ["insightml[boost,explain,report,scale]"]
+full = ["dissectml[boost,explain,report,scale]"]
 dev = [
-    "insightml[full]",
+    "dissectml[full]",
     "pytest>=8.0",
     "pytest-cov>=4.0",
     "pytest-xdist>=3.5",
@@ -56,12 +56,12 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/rupeshbharambe24/InsightML"
-Documentation = "https://insightml.readthedocs.io"
+Documentation = "https://dissectml.readthedocs.io"
 Repository = "https://github.com/rupeshbharambe24/InsightML"
 "Bug Tracker" = "https://github.com/rupeshbharambe24/InsightML/issues"
 
 [tool.hatch.version]
-path = "src/insightml/_version.py"
+path = "src/dissectml/_version.py"
 
 [tool.hatch.build.targets.sdist]
 exclude = [
@@ -74,7 +74,7 @@ exclude = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/insightml"]
+packages = ["src/dissectml"]
 
 [tool.ruff]
 target-version = "py310"
@@ -104,7 +104,7 @@ markers = [
 ]
 
 [tool.coverage.run]
-source = ["src/insightml"]
+source = ["src/dissectml"]
 omit = ["*/tests/*"]
 
 [tool.coverage.report]

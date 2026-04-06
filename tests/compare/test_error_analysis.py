@@ -3,15 +3,15 @@
 import numpy as np
 import pandas as pd
 
-from insightml.compare.comparator import ModelComparator
-from insightml.compare.error_analysis import ErrorAnalysisResult, analyze_errors
+from dissectml.compare.comparator import ModelComparator
+from dissectml.compare.error_analysis import ErrorAnalysisResult, analyze_errors
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
 def _make_battle_result(n=200, task="classification"):
-    from insightml.battle.result import BattleResult, ModelScore
+    from dissectml.battle.result import BattleResult, ModelScore
     rng = np.random.default_rng(42)
 
     if task == "classification":
@@ -116,7 +116,7 @@ class TestAnalyzeErrors:
 
 class TestModelComparator:
     def test_table(self):
-        from insightml.compare.metrics_table import ComparisonTable
+        from dissectml.compare.metrics_table import ComparisonTable
         result, y = _make_battle_result()
         comp = ModelComparator(result, y=y)
         assert isinstance(comp.table, ComparisonTable)

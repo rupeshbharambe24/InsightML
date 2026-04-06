@@ -6,7 +6,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import pytest
 
-from insightml.eda.result import EDAResult
+from dissectml.eda.result import EDAResult
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -38,7 +38,7 @@ def interactions(eda_result):
 # ---------------------------------------------------------------------------
 
 def test_interactions_returns_object(eda_result):
-    from insightml.eda.interactions import FeatureInteractions
+    from dissectml.eda.interactions import FeatureInteractions
     assert isinstance(eda_result.interactions, FeatureInteractions)
 
 

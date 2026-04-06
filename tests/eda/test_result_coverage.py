@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from insightml.eda.result import EDAResult
+from dissectml.eda.result import EDAResult
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -70,13 +70,13 @@ class TestLazyProperties:
     def test_overview_accessible(self, eda):
         ov = eda.overview
         assert ov is not None
-        from insightml.eda.overview import DataOverview
+        from dissectml.eda.overview import DataOverview
         assert isinstance(ov, DataOverview)
 
     def test_univariate_accessible(self, eda):
         u = eda.univariate
         assert u is not None
-        from insightml.eda.univariate import UnivariateAnalysis
+        from dissectml.eda.univariate import UnivariateAnalysis
         assert isinstance(u, UnivariateAnalysis)
 
     def test_bivariate_accessible(self, eda):
@@ -184,18 +184,18 @@ class TestShow:
     def test_show_does_not_crash(self, eda, monkeypatch):
         """show() should not raise; monkeypatch display_html to no-op."""
         monkeypatch.setattr(
-            "insightml.viz.display.display_html", lambda html: None
+            "dissectml.viz.display.display_html", lambda html: None
         )
         monkeypatch.setattr(
-            "insightml.eda.result.display_html", lambda html: None
+            "dissectml.eda.result.display_html", lambda html: None
         )
         eda.show()
 
     def test_show_no_target_does_not_crash(self, eda_no_target, monkeypatch):
         monkeypatch.setattr(
-            "insightml.viz.display.display_html", lambda html: None
+            "dissectml.viz.display.display_html", lambda html: None
         )
         monkeypatch.setattr(
-            "insightml.eda.result.display_html", lambda html: None
+            "dissectml.eda.result.display_html", lambda html: None
         )
         eda_no_target.show()

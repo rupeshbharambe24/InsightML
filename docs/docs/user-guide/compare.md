@@ -6,7 +6,7 @@ All properties are lazy `@cached_property` — computed on first access.
 ## Basic Usage
 
 ```python
-import insightml as iml
+import dissectml as iml
 
 comp = iml.ModelComparator(battle_result, y=df["target"])
 

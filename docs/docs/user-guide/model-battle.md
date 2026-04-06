@@ -58,8 +58,8 @@ Preprocessing is informed by EDA results when `iml.analyze()` is used. In standa
 ## Custom Models
 
 ```python
-from insightml.battle.catalog import ModelEntry
-from insightml.battle.registry import get_registry
+from dissectml.battle.catalog import ModelEntry
+from dissectml.battle.registry import get_registry
 
 registry = get_registry()
 registry.register(ModelEntry(

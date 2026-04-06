@@ -2,28 +2,28 @@
 
 ## ModelComparator
 
-::: insightml.compare.comparator.ModelComparator
+::: dissectml.compare.comparator.ModelComparator
 
 ## Metrics Table
 
-::: insightml.compare.metrics_table
+::: dissectml.compare.metrics_table
 
 ## Curves
 
-::: insightml.compare.curves
+::: dissectml.compare.curves
 
 ## Error Analysis
 
-::: insightml.compare.error_analysis
+::: dissectml.compare.error_analysis
 
 ## Statistical Significance
 
-::: insightml.compare.significance
+::: dissectml.compare.significance
 
 ## Pareto Front
 
-::: insightml.compare.pareto
+::: dissectml.compare.pareto
 
 ## SHAP Comparison
 
-::: insightml.compare.shap_compare
+::: dissectml.compare.shap_compare

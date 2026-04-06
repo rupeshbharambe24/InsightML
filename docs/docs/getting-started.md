@@ -3,13 +3,13 @@
 ## Installation
 
 ```bash
-pip install insightml
+pip install dissectml
 ```
 
 ## Your First Analysis
 
 ```python
-import insightml as iml
+import dissectml as iml
 
 # Load a built-in demo dataset
 df = iml.load_titanic()

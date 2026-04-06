@@ -1,4 +1,4 @@
-"""Tests for insightml._io — file I/O helpers."""
+"""Tests for dissectml._io — file I/O helpers."""
 
 from __future__ import annotations
 
@@ -8,8 +8,8 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from insightml._io import SUPPORTED_EXTENSIONS, read_data
-from insightml.exceptions import UnsupportedFormatError
+from dissectml._io import SUPPORTED_EXTENSIONS, read_data
+from dissectml.exceptions import UnsupportedFormatError
 
 # ---------------------------------------------------------------------------
 # read_data() — CSV

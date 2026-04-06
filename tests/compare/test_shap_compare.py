@@ -23,7 +23,7 @@ shap_installed = pytest.mark.skipif(
 # ---------------------------------------------------------------------------
 
 def _make_clf_result(n=100):
-    from insightml.battle.result import BattleResult, ModelScore
+    from dissectml.battle.result import BattleResult, ModelScore
 
     rng = np.random.default_rng(42)
     y = rng.choice([0, 1], n)
@@ -51,7 +51,7 @@ def _make_clf_result(n=100):
 
 
 def _make_reg_result(n=100):
-    from insightml.battle.result import BattleResult, ModelScore
+    from dissectml.battle.result import BattleResult, ModelScore
 
     rng = np.random.default_rng(0)
     y = rng.normal(0, 1, n)
@@ -86,7 +86,7 @@ def _make_result_with_pipeline(n=30):
     from sklearn.linear_model import LogisticRegression
     from sklearn.pipeline import Pipeline
 
-    from insightml.battle.result import BattleResult, ModelScore
+    from dissectml.battle.result import BattleResult, ModelScore
 
     rng = np.random.default_rng(11)
     X = _make_small_X(n=n)
@@ -126,7 +126,7 @@ class TestShapComparisonImportError:
         if not _SHAP_AVAILABLE:
             pytest.skip("shap not installed; ImportError is guaranteed without mocking")
 
-        from insightml.compare import shap_compare as sc_module
+        from dissectml.compare import shap_compare as sc_module
 
         __builtins__.__import__ if hasattr(__builtins__, "__import__") else __import__
 
@@ -144,7 +144,7 @@ class TestShapComparisonNoFittedPipeline:
         if not _SHAP_AVAILABLE:
             pytest.skip("shap not installed")
 
-        from insightml.compare.shap_compare import shap_comparison
+        from dissectml.compare.shap_compare import shap_comparison
 
         result, _ = _make_clf_result(n=30)
         X = _make_small_X(n=30)
@@ -161,14 +161,14 @@ class TestShapComparisonNoFittedPipeline:
 @shap_installed
 class TestShapComparisonWithFittedPipeline:
     def test_returns_dict(self):
-        from insightml.compare.shap_compare import shap_comparison
+        from dissectml.compare.shap_compare import shap_comparison
 
         result, _, X = _make_result_with_pipeline(n=30)
         out = shap_comparison(result, X)
         assert isinstance(out, dict)
 
     def test_dict_has_required_keys(self):
-        from insightml.compare.shap_compare import shap_comparison
+        from dissectml.compare.shap_compare import shap_comparison
 
         result, _, X = _make_result_with_pipeline(n=30)
         out = shap_comparison(result, X)
@@ -177,21 +177,21 @@ class TestShapComparisonWithFittedPipeline:
         assert "figures" in out
 
     def test_importance_df_is_dataframe(self):
-        from insightml.compare.shap_compare import shap_comparison
+        from dissectml.compare.shap_compare import shap_comparison
 
         result, _, X = _make_result_with_pipeline(n=30)
         out = shap_comparison(result, X)
         assert isinstance(out["importance_df"], pd.DataFrame)
 
     def test_figures_is_dict(self):
-        from insightml.compare.shap_compare import shap_comparison
+        from dissectml.compare.shap_compare import shap_comparison
 
         result, _, X = _make_result_with_pipeline(n=30)
         out = shap_comparison(result, X)
         assert isinstance(out["figures"], dict)
 
     def test_importance_df_has_feature_column(self):
-        from insightml.compare.shap_compare import shap_comparison
+        from dissectml.compare.shap_compare import shap_comparison
 
         result, _, X = _make_result_with_pipeline(n=30)
         out = shap_comparison(result, X)
@@ -200,7 +200,7 @@ class TestShapComparisonWithFittedPipeline:
             assert "feature" in df.columns
 
     def test_importance_df_has_model_column(self):
-        from insightml.compare.shap_compare import shap_comparison
+        from dissectml.compare.shap_compare import shap_comparison
 
         result, _, X = _make_result_with_pipeline(n=30)
         out = shap_comparison(result, X)
@@ -209,7 +209,7 @@ class TestShapComparisonWithFittedPipeline:
             assert "FittedModel" in df.columns
 
     def test_top_n_1_limits_models(self):
-        from insightml.compare.shap_compare import shap_comparison
+        from dissectml.compare.shap_compare import shap_comparison
 
         result, _, X = _make_result_with_pipeline(n=30)
         out = shap_comparison(result, X, top_n=1)
@@ -217,7 +217,7 @@ class TestShapComparisonWithFittedPipeline:
         assert isinstance(out["importance_df"], pd.DataFrame)
 
     def test_figures_keys_are_model_names(self):
-        from insightml.compare.shap_compare import shap_comparison
+        from dissectml.compare.shap_compare import shap_comparison
 
         result, _, X = _make_result_with_pipeline(n=30)
         out = shap_comparison(result, X)

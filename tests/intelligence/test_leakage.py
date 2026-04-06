@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from insightml.intelligence.leakage import detect_leakage
+from dissectml.intelligence.leakage import detect_leakage
 
 
 @pytest.fixture

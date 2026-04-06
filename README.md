@@ -2,7 +2,7 @@
 
 # InsightML
 
-[![PyPI version](https://img.shields.io/pypi/v/insightml)](https://pypi.org/project/insightml/)
+[![PyPI version](https://img.shields.io/pypi/v/dissectml)](https://pypi.org/project/dissectml/)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/rupeshbharambe24/InsightML)
 [![CI](https://github.com/rupeshbharambe24/InsightML/actions/workflows/ci.yml/badge.svg)](https://github.com/rupeshbharambe24/InsightML/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/rupeshbharambe24/InsightML/blob/master/LICENSE)
@@ -12,7 +12,7 @@
 *Deep data understanding meets model comparison -- the full journey from
 "What is my data?" to "Which model is best and WHY?", in as few as 3 function calls.*
 
-[Quick Start](#quick-start) | [Features](#key-features) | [Installation](#installation) | [Documentation](https://insightml.readthedocs.io) | [Contributing](#contributing)
+[Quick Start](#quick-start) | [Features](#key-features) | [Installation](#installation) | [Documentation](https://dissectml.readthedocs.io) | [Contributing](#contributing)
 
 </div>
 
@@ -31,7 +31,7 @@ time you have answers, you have imported 3-5 separate libraries, written
 hundreds of lines of glue code, and lost the thread that connects your data
 findings to your modelling decisions.
 
-InsightML (`insightml`) closes that gap. It is a single, unified pipeline that
+InsightML (`dissectml`) closes that gap. It is a single, unified pipeline that
 runs deep exploratory data analysis, pre-model intelligence checks (leakage
 detection, readiness scoring, algorithm recommendations), a multi-model battle
 arena, cross-model statistical comparison, and publication-ready HTML report
@@ -106,7 +106,7 @@ notebooks.
 ## Quick Start
 
 ```python
-import insightml as iml
+import dissectml as iml
 
 # Load a built-in dataset
 df = iml.load_titanic()
@@ -153,17 +153,17 @@ fine-grained control, call each stage individually.
 ### Core package
 
 ```bash
-pip install insightml
+pip install dissectml
 ```
 
 ### Optional extras
 
 ```bash
-pip install insightml[boost]     # XGBoost, LightGBM, CatBoost
-pip install insightml[explain]   # SHAP explainability
-pip install insightml[report]    # PDF export (WeasyPrint + Kaleido)
-pip install insightml[scale]     # Polars backend + Optuna tuning
-pip install insightml[full]      # Everything above
+pip install dissectml[boost]     # XGBoost, LightGBM, CatBoost
+pip install dissectml[explain]   # SHAP explainability
+pip install dissectml[report]    # PDF export (WeasyPrint + Kaleido)
+pip install dissectml[scale]     # Polars backend + Optuna tuning
+pip install dissectml[full]      # Everything above
 ```
 
 ### Development
@@ -203,22 +203,22 @@ InsightML is organized into five pipeline stages, each backed by a dedicated
 subpackage:
 
 ```
-Stage 1: EDA            insightml.eda           9 sub-modules (overview, correlations,
+Stage 1: EDA            dissectml.eda           9 sub-modules (overview, correlations,
                                                 missing, outliers, univariate, bivariate,
                                                 clusters, interactions, statistical_tests)
 
-Stage 2: Intelligence   insightml.intelligence  Leakage detection, multicollinearity,
+Stage 2: Intelligence   dissectml.intelligence  Leakage detection, multicollinearity,
                                                 feature importance, readiness scoring,
                                                 algorithm recommendations
 
-Stage 3: Battle         insightml.battle        Model catalog, preprocessing pipeline,
+Stage 3: Battle         dissectml.battle        Model catalog, preprocessing pipeline,
                                                 parallel CV runner, hyperparameter tuner
 
-Stage 4: Compare        insightml.compare       Metrics tables, significance tests,
+Stage 4: Compare        dissectml.compare       Metrics tables, significance tests,
                                                 error analysis, Pareto frontiers,
                                                 ROC/PR curves, SHAP comparison
 
-Stage 5: Report         insightml.report        Jinja2 HTML builder, narrative generator,
+Stage 5: Report         dissectml.report        Jinja2 HTML builder, narrative generator,
                                                 section renderers, PDF export
 ```
 
@@ -229,7 +229,7 @@ Stage 5: Report         insightml.report        Jinja2 HTML builder, narrative g
 InsightML uses a global configuration object for controlling default behavior:
 
 ```python
-import insightml as iml
+import dissectml as iml
 
 # View current config
 print(iml.get_config())
@@ -256,7 +256,7 @@ df_housing = iml.load_housing()    # Regression (house prices)
 
 Full documentation, API reference, and tutorials are available at:
 
-**[https://insightml.readthedocs.io](https://insightml.readthedocs.io)**
+**[https://dissectml.readthedocs.io](https://dissectml.readthedocs.io)**
 
 ---
 

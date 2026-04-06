@@ -6,8 +6,8 @@ import pandas as pd
 import plotly.graph_objects as go
 import pytest
 
-from insightml.eda.result import EDAResult
-from insightml.eda.univariate import UnivariateAnalysis
+from dissectml.eda.result import EDAResult
+from dissectml.eda.univariate import UnivariateAnalysis
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -186,10 +186,10 @@ class TestShowPlot:
     def test_show_does_not_crash(self, univariate_mixed, monkeypatch):
         """show() should not raise; monkeypatch display_html to no-op."""
         monkeypatch.setattr(
-            "insightml.viz.display.display_html", lambda html: None
+            "dissectml.viz.display.display_html", lambda html: None
         )
         monkeypatch.setattr(
-            "insightml.eda._base.display_html", lambda html: None
+            "dissectml.eda._base.display_html", lambda html: None
         )
         univariate_mixed.show()
 

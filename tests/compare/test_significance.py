@@ -3,8 +3,8 @@
 import numpy as np
 import pandas as pd
 
-from insightml.compare.pareto import _compute_pareto, get_pareto_models, pareto_front
-from insightml.compare.significance import corrected_ttest_matrix, mcnemar_matrix
+from dissectml.compare.pareto import _compute_pareto, get_pareto_models, pareto_front
+from dissectml.compare.significance import corrected_ttest_matrix, mcnemar_matrix
 
 # ---------------------------------------------------------------------------
 # Shared fixtures — build a minimal BattleResult with OOF predictions
@@ -12,7 +12,7 @@ from insightml.compare.significance import corrected_ttest_matrix, mcnemar_matri
 
 def _make_clf_result(n=200):
     """Build a minimal classification BattleResult for testing."""
-    from insightml.battle.result import BattleResult, ModelScore
+    from dissectml.battle.result import BattleResult, ModelScore
 
     rng = np.random.default_rng(99)
     y = rng.choice([0, 1], n)
@@ -44,7 +44,7 @@ def _make_clf_result(n=200):
 
 
 def _make_reg_result(n=200):
-    from insightml.battle.result import BattleResult, ModelScore
+    from dissectml.battle.result import BattleResult, ModelScore
 
     rng = np.random.default_rng(77)
     y = rng.normal(0, 1, n)

@@ -1,4 +1,4 @@
-"""Tests for insightml.core.pipeline — InsightPipeline orchestrator."""
+"""Tests for dissectml.core.pipeline — InsightPipeline orchestrator."""
 
 from __future__ import annotations
 
@@ -6,10 +6,10 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from insightml._config import InsightMLConfig
-from insightml.core.data_container import DataContainer
-from insightml.core.pipeline import InsightPipeline
-from insightml.eda.result import EDAResult
+from dissectml._config import InsightMLConfig
+from dissectml.core.data_container import DataContainer
+from dissectml.core.pipeline import InsightPipeline
+from dissectml.eda.result import EDAResult
 
 # ---------------------------------------------------------------------------
 # Fixtures

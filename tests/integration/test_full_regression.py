@@ -14,9 +14,9 @@ import pandas as pd
 import plotly.graph_objects as go
 import pytest
 
-import insightml as iml
-from insightml.eda.result import EDAResult
-from insightml.report.builder import AnalysisReport
+import dissectml as iml
+from dissectml.eda.result import EDAResult
+from dissectml.report.builder import AnalysisReport
 
 # ---------------------------------------------------------------------------
 # Module-level marks

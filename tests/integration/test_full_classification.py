@@ -12,9 +12,9 @@ from __future__ import annotations
 import pandas as pd
 import pytest
 
-import insightml as iml
-from insightml.eda.result import EDAResult
-from insightml.report.builder import AnalysisReport
+import dissectml as iml
+from dissectml.eda.result import EDAResult
+from dissectml.report.builder import AnalysisReport
 
 # ---------------------------------------------------------------------------
 # Module-level marks

@@ -1,7 +1,7 @@
 """Tests for MissingDataIntelligence."""
 import pandas as pd
 
-from insightml.eda.missing import MissingDataIntelligence
+from dissectml.eda.missing import MissingDataIntelligence
 
 
 def test_no_missing():
@@ -37,7 +37,7 @@ def test_recommendations_returned(df_with_missing):
 def test_classify_returns_missingness_types(df_with_missing):
     m = MissingDataIntelligence(df_with_missing)
     classification = m.classify()
-    from insightml._types import MissingnessType
+    from dissectml._types import MissingnessType
     for _col, mtype in classification.items():
         assert isinstance(mtype, MissingnessType)
 

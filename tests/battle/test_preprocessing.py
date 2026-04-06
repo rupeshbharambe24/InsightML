@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 from sklearn.pipeline import Pipeline
 
-from insightml.battle.preprocessing import (
+from dissectml.battle.preprocessing import (
     PreprocessingPlan,
     build_full_pipeline,
     build_preprocessing_plan,

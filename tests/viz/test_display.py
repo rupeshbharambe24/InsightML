@@ -1,7 +1,7 @@
 """Tests for viz.display — environment detection and display utilities."""
 from __future__ import annotations
 
-from insightml.viz.display import (
+from dissectml.viz.display import (
     HTMLReprMixin,
     detect_environment,
     display_html,
@@ -80,7 +80,7 @@ class TestHTMLReprMixin:
     def test_show_does_not_crash(self, monkeypatch):
         """show() calls display_html; monkeypatch to avoid browser open."""
         monkeypatch.setattr(
-            "insightml.viz.display.display_html", lambda html: None
+            "dissectml.viz.display.display_html", lambda html: None
         )
         obj = HTMLReprMixin()
         obj.show()
@@ -94,11 +94,11 @@ class TestDisplayHTML:
     def test_terminal_mode_calls_show_in_browser(self, monkeypatch):
         """In terminal mode, display_html should fall through to show_in_browser."""
         monkeypatch.setattr(
-            "insightml.viz.display.detect_environment", lambda: "terminal"
+            "dissectml.viz.display.detect_environment", lambda: "terminal"
         )
         opened = []
         monkeypatch.setattr(
-            "insightml.viz.display.show_in_browser",
+            "dissectml.viz.display.show_in_browser",
             lambda html, **kw: opened.append(html),
         )
         display_html("<div>Test</div>")
@@ -108,7 +108,7 @@ class TestDisplayHTML:
     def test_does_not_crash_in_terminal(self, monkeypatch):
         """display_html should not raise in terminal mode."""
         monkeypatch.setattr(
-            "insightml.viz.display.detect_environment", lambda: "terminal"
+            "dissectml.viz.display.detect_environment", lambda: "terminal"
         )
         monkeypatch.setattr("webbrowser.open", lambda url: None)
         display_html("<p>Hello</p>")

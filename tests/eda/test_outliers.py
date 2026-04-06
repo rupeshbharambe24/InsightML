@@ -1,5 +1,5 @@
 """Tests for OutlierDetection."""
-from insightml.eda.outliers import OutlierDetection
+from dissectml.eda.outliers import OutlierDetection
 
 
 def test_iqr_detects_extremes(df_with_outliers):

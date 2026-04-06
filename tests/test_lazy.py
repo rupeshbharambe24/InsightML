@@ -1,4 +1,4 @@
-"""Tests for insightml._lazy — optional dependency guard."""
+"""Tests for dissectml._lazy — optional dependency guard."""
 
 from __future__ import annotations
 
@@ -7,8 +7,8 @@ from unittest.mock import patch
 
 import pytest
 
-from insightml._lazy import is_available, require
-from insightml.exceptions import OptionalDependencyError
+from dissectml._lazy import is_available, require
+from dissectml.exceptions import OptionalDependencyError
 
 
 def _import_raising(name: str):
@@ -42,17 +42,17 @@ class TestRequire:
         """Error message includes the pip install hint from _EXTRA_MAP."""
         # xgboost may be installed, so we mock import_module to raise
         with patch.object(importlib, "import_module", side_effect=ImportError("no xgboost")):
-            with pytest.raises(OptionalDependencyError, match=r"pip install insightml\[boost\]"):
+            with pytest.raises(OptionalDependencyError, match=r"pip install dissectml\[boost\]"):
                 require("xgboost")
 
     def test_error_message_for_unmapped_package(self):
         """Unmapped packages use the package name as the install hint."""
-        with pytest.raises(OptionalDependencyError, match=r"pip install insightml\[nonexistent_pkg\]"):
+        with pytest.raises(OptionalDependencyError, match=r"pip install dissectml\[nonexistent_pkg\]"):
             require("nonexistent_pkg")
 
     def test_explicit_extra_overrides_map(self):
         """Providing extra= explicitly overrides the _EXTRA_MAP lookup."""
-        with pytest.raises(OptionalDependencyError, match=r"pip install insightml\[mygroup\]"):
+        with pytest.raises(OptionalDependencyError, match=r"pip install dissectml\[mygroup\]"):
             require("nonexistent_package_xyz_12345", extra="mygroup")
 
     def test_explicit_extra_with_pip_install_prefix(self):
@@ -93,11 +93,11 @@ class TestIsAvailable:
 # ---------------------------------------------------------------------------
 
 class TestOptionalDependencyError:
-    """Verify the exception can be imported from insightml.exceptions."""
+    """Verify the exception can be imported from dissectml.exceptions."""
 
     def test_is_exception_subclass(self):
         assert issubclass(OptionalDependencyError, Exception)
 
     def test_inherits_from_dependency_error(self):
-        from insightml.exceptions import DependencyError
+        from dissectml.exceptions import DependencyError
         assert issubclass(OptionalDependencyError, DependencyError)

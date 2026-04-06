@@ -71,8 +71,8 @@ site/
 # Reports (generated output)
 *.html
 !InsightML.html
-!src/insightml/report/templates/
-!src/insightml/report/assets/
+!src/dissectml/report/templates/
+!src/dissectml/report/assets/
 
 # Temporary files
 *.tmp

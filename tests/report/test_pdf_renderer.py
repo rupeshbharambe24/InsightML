@@ -1,6 +1,6 @@
-"""Tests for insightml.report.pdf_renderer.
+"""Tests for dissectml.report.pdf_renderer.
 
-weasyprint is an optional dependency (pip install insightml[report]).
+weasyprint is an optional dependency (pip install dissectml[report]).
 In the standard test environment it is not installed.
 
 Strategy
@@ -19,7 +19,7 @@ import sys
 
 import pytest
 
-from insightml.report.builder import AnalysisReport
+from dissectml.report.builder import AnalysisReport
 
 # ---------------------------------------------------------------------------
 # Shared fixture
@@ -42,7 +42,7 @@ def minimal_report():
 def _reload_pdf_renderer_without_weasyprint(monkeypatch):
     """Patch sys.modules so weasyprint looks absent, then reload pdf_renderer."""
     monkeypatch.setitem(sys.modules, "weasyprint", None)
-    import insightml.report.pdf_renderer as mod
+    import dissectml.report.pdf_renderer as mod
     importlib.reload(mod)
     return mod
 
@@ -65,7 +65,7 @@ class TestPdfRendererWithoutWeasyprint:
 
     def test_error_message_mentions_pip_install(self, minimal_report, monkeypatch):
         mod = _reload_pdf_renderer_without_weasyprint(monkeypatch)
-        with pytest.raises(ImportError, match="pip install insightml"):
+        with pytest.raises(ImportError, match="pip install dissectml"):
             mod.render_pdf_report(minimal_report)
 
 
@@ -90,13 +90,13 @@ _weasyprint_skip = pytest.mark.skipif(
 @_weasyprint_skip
 class TestPdfRendererWithWeasyprint:
     def test_render_pdf_returns_bytes(self, minimal_report):
-        from insightml.report.pdf_renderer import render_pdf_report
+        from dissectml.report.pdf_renderer import render_pdf_report
         result = render_pdf_report(minimal_report)
         assert isinstance(result, bytes)
         assert len(result) > 0
 
     def test_export_pdf_creates_file(self, minimal_report, tmp_path):
-        from insightml.report.pdf_renderer import export_pdf
+        from dissectml.report.pdf_renderer import export_pdf
         out = export_pdf(minimal_report, tmp_path / "report.pdf")
         assert out.exists()
         assert out.stat().st_size > 0

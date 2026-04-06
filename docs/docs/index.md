@@ -2,10 +2,10 @@
 
 **The missing middle layer between EDA and AutoML.**
 
-InsightML (`insightml` on PyPI) gives data scientists a single, unified pipeline from raw data to publication-ready insights — in as few as 3 function calls.
+InsightML (`dissectml` on PyPI) gives data scientists a single, unified pipeline from raw data to publication-ready insights — in as few as 3 function calls.
 
 ```python
-import insightml as iml
+import dissectml as iml
 
 df = iml.load_titanic()
 report = iml.analyze(df, target="survived")
@@ -38,15 +38,15 @@ report.export("report.html")
 ## Installation
 
 ```bash
-pip install insightml
+pip install dissectml
 ```
 
 With optional extras:
 ```bash
-pip install insightml[boost]    # XGBoost, LightGBM, CatBoost
-pip install insightml[explain]  # SHAP explanations
-pip install insightml[report]   # PDF export (WeasyPrint)
-pip install insightml[full]     # Everything
+pip install dissectml[boost]    # XGBoost, LightGBM, CatBoost
+pip install dissectml[explain]  # SHAP explanations
+pip install dissectml[report]   # PDF export (WeasyPrint)
+pip install dissectml[full]     # Everything
 ```
 
 ---
