@@ -29,10 +29,13 @@ def infer_task(target: pd.Series) -> TaskType:
     n = len(target)
     nu = target.nunique()
 
-    if target.dtype in ("object", "category", "bool"):
+    # Handle bool, object, string (pandas 3.x uses StringDtype), and category
+    if pd.api.types.is_bool_dtype(target):
         return TaskType.CLASSIFICATION
 
-    if pd.api.types.is_bool_dtype(target):
+    if (pd.api.types.is_object_dtype(target)
+            or pd.api.types.is_string_dtype(target)
+            or str(target.dtype) in ("category", "string", "object")):
         return TaskType.CLASSIFICATION
 
     if pd.api.types.is_integer_dtype(target):

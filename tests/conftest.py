@@ -80,7 +80,7 @@ def df_with_outliers() -> pd.DataFrame:
     return pd.DataFrame({
         "normal_col": rng.normal(0, 1, n),
         "outlier_col": col,
-        "target": rng.randint(0, 2, n),
+        "target": rng.integers(0, 2, n),
     })
 
 
@@ -106,7 +106,7 @@ def df_all_types() -> pd.DataFrame:
         "datetime": pd.date_range("2023-01-01", periods=n, freq="D"),
         "high_card": [f"item_{i}" for i in range(n)],  # n unique -> UNIQUE_ID
         "constant": ["same"] * n,
-        "target": rng.randint(0, 2, n),
+        "target": rng.integers(0, 2, n),
     })
 
 
