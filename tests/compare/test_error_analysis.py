@@ -2,11 +2,9 @@
 
 import numpy as np
 import pandas as pd
-import pytest
 
-from insightml.compare.error_analysis import ErrorAnalysisResult, analyze_errors
 from insightml.compare.comparator import ModelComparator
-
+from insightml.compare.error_analysis import ErrorAnalysisResult, analyze_errors
 
 # ---------------------------------------------------------------------------
 # Helpers

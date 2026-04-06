@@ -36,25 +36,25 @@ QUALITATIVE = [
 _LAYOUT = go.Layout(
     paper_bgcolor="white",
     plot_bgcolor="#f8f9fa",
-    font=dict(family="Inter, system-ui, sans-serif", size=12, color="#2d3748"),
-    title=dict(font=dict(size=16, color="#2d3748"), x=0.01, xanchor="left"),
+    font={"family": "Inter, system-ui, sans-serif", "size": 12, "color": "#2d3748"},
+    title={"font": {"size": 16, "color": "#2d3748"}, "x": 0.01, "xanchor": "left"},
     colorway=QUALITATIVE,
-    margin=dict(t=50, r=20, b=50, l=60),
-    legend=dict(
-        bgcolor="rgba(255,255,255,0.9)",
-        bordercolor="#e2e8f0",
-        borderwidth=1,
-    ),
-    xaxis=dict(
-        gridcolor="#e2e8f0",
-        linecolor="#cbd5e0",
-        zerolinecolor="#cbd5e0",
-    ),
-    yaxis=dict(
-        gridcolor="#e2e8f0",
-        linecolor="#cbd5e0",
-        zerolinecolor="#cbd5e0",
-    ),
+    margin={"t": 50, "r": 20, "b": 50, "l": 60},
+    legend={
+        "bgcolor": "rgba(255,255,255,0.9)",
+        "bordercolor": "#e2e8f0",
+        "borderwidth": 1,
+    },
+    xaxis={
+        "gridcolor": "#e2e8f0",
+        "linecolor": "#cbd5e0",
+        "zerolinecolor": "#cbd5e0",
+    },
+    yaxis={
+        "gridcolor": "#e2e8f0",
+        "linecolor": "#cbd5e0",
+        "zerolinecolor": "#cbd5e0",
+    },
 )
 
 INSIGHTML_TEMPLATE = go.layout.Template(layout=_LAYOUT)

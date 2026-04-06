@@ -21,7 +21,6 @@ from insightml.report.narrative import (
     model_narrative,
 )
 
-
 # ---------------------------------------------------------------------------
 # executive_summary — regression variant
 # ---------------------------------------------------------------------------

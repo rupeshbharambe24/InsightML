@@ -13,7 +13,6 @@ import pytest
 
 from insightml.report.builder import AnalysisReport
 
-
 # ---------------------------------------------------------------------------
 # Construction and attribute access
 # ---------------------------------------------------------------------------

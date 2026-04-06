@@ -1,7 +1,6 @@
 """Tests for ClusterDiscovery."""
-import pytest
 import pandas as pd
-import numpy as np
+
 from insightml.eda.clusters import ClusterDiscovery
 
 

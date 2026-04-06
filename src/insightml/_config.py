@@ -5,8 +5,9 @@ from __future__ import annotations
 import contextlib
 import copy
 import threading
+from collections.abc import Generator
 from dataclasses import dataclass, field
-from typing import Any, Generator
+from typing import Any
 
 
 @dataclass
@@ -48,7 +49,7 @@ class InsightMLConfig:
     # --- General ---
     verbosity: int = 1                      # 0=silent, 1=progress, 2=debug
 
-    def copy_with(self, **kwargs: Any) -> "InsightMLConfig":
+    def copy_with(self, **kwargs: Any) -> InsightMLConfig:
         """Return a copy of this config with the given fields overridden."""
         cfg = copy.copy(self)
         for key, value in kwargs.items():

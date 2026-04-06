@@ -1,7 +1,8 @@
 """Tests for TargetAnalysis."""
-import pytest
-import pandas as pd
 import numpy as np
+import pandas as pd
+import pytest
+
 from insightml.eda.target_analysis import TargetAnalysis
 
 

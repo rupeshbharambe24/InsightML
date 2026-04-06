@@ -174,17 +174,17 @@ class FeatureInteractions(BaseAnalysisModule):
         fig.add_trace(go.Scatter3d(
             x=x, y=y, z=z,
             mode="markers",
-            marker=dict(
-                size=3, opacity=0.5,
-                color=z, colorscale="Viridis", showscale=True,
-            ),
+            marker={
+                "size": 3, "opacity": 0.5,
+                "color": z, "colorscale": "Viridis", "showscale": True,
+            },
         ))
         fig.update_layout(
-            scene=dict(
-                xaxis_title=col_a,
-                yaxis_title=col_b,
-                zaxis_title=f"{col_a} × {col_b}",
-            ),
+            scene={
+                "xaxis_title": col_a,
+                "yaxis_title": col_b,
+                "zaxis_title": f"{col_a} × {col_b}",
+            },
             height=500,
         )
         return fig

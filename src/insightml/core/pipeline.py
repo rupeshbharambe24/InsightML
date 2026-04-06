@@ -2,14 +2,12 @@
 
 from __future__ import annotations
 
-import time
 from typing import Any
 
 import pandas as pd
 
 from insightml._config import InsightMLConfig, get_config
-from insightml._types import TaskType
-from insightml.core.base import PipelineContext, StageResult
+from insightml.core.base import PipelineContext
 from insightml.core.data_container import DataContainer
 
 
@@ -52,7 +50,7 @@ class InsightPipeline:
         container = DataContainer.from_input(data, target=target, task=task, config=self.config)
 
         # Stage 1: EDA (v0.1+)
-        eda_result = self.run_eda(container)
+        self.run_eda(container)
 
         # Stages 2-5: to be implemented in v0.2-v0.4
         raise NotImplementedError(

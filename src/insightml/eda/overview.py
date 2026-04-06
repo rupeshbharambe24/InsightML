@@ -2,13 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Any
-
-import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
-from insightml._config import InsightMLConfig
 from insightml._types import ColumnProfile, ColumnType
 from insightml.core.validators import infer_column_type
 from insightml.eda._base import BaseAnalysisModule

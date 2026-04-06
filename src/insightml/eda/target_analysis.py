@@ -280,7 +280,7 @@ def _target_dist_fig(target: pd.Series) -> go.Figure:
         fig.add_trace(go.Scatter(
             x=kde_x, y=kde_y * scale,
             mode="lines", name="KDE",
-            line=dict(color=QUALITATIVE[1], width=2),
+            line={"color": QUALITATIVE[1], "width": 2},
         ))
     except Exception:
         pass
@@ -302,7 +302,7 @@ def _feature_target_fig(
             fig.add_trace(go.Scatter(
                 x=feature[mask], y=target[mask],
                 mode="markers",
-                marker=dict(color=QUALITATIVE[0], size=4, opacity=0.5),
+                marker={"color": QUALITATIVE[0], "size": 4, "opacity": 0.5},
                 showlegend=False,
             ))
             fig.update_layout(xaxis_title=feature.name, yaxis_title=target.name,

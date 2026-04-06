@@ -9,8 +9,7 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
-from insightml.viz.theme import make_figure, QUALITATIVE
-
+from insightml.viz.theme import QUALITATIVE, make_figure
 
 # ---------------------------------------------------------------------------
 # Scoring constants
@@ -87,7 +86,7 @@ class ReadinessResult:
                 },
             },
         ))
-        fig.update_layout(height=300, margin=dict(t=50, b=10, l=20, r=20))
+        fig.update_layout(height=300, margin={"t": 50, "b": 10, "l": 20, "r": 20})
         return fig
 
     def waterfall_figure(self) -> go.Figure:

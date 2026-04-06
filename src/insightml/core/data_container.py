@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
 
 import pandas as pd
 
@@ -54,7 +53,7 @@ class DataContainer:
         target: str | None = None,
         task: str | TaskType = TaskType.AUTO,
         config: InsightMLConfig | None = None,
-    ) -> "DataContainer":
+    ) -> DataContainer:
         """Create a DataContainer from multiple input types.
 
         Args:

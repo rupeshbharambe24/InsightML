@@ -2,15 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 import pandas as pd
 from sklearn.feature_selection import mutual_info_classif, mutual_info_regression
 from sklearn.linear_model import LinearRegression
 
 from insightml._types import LeakageWarning
-
 
 # ---------------------------------------------------------------------------
 # Thresholds
@@ -56,7 +53,6 @@ def detect_leakage(
 
     feature_cols = [c for c in df.columns if c != target and c != datetime_col]
     y = df[target]
-    warnings: list[LeakageWarning] = []
 
     seen: dict[str, LeakageWarning] = {}  # col -> highest-severity warning
 

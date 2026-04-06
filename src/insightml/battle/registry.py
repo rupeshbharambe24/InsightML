@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any
-
-from insightml.battle.catalog import MODEL_CATALOG, ModelEntry, get_classifiers, get_regressors
+from insightml.battle.catalog import MODEL_CATALOG, ModelEntry
 
 
 class ModelRegistry:
@@ -37,7 +35,6 @@ class ModelRegistry:
         Returns:
             List of ModelEntry sorted by family then name.
         """
-        fn = get_classifiers if task == "classification" else get_regressors
         # Use the live catalog (which may have custom entries)
         entries = [
             e for e in self._catalog.values()

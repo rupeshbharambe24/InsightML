@@ -85,6 +85,7 @@ def _make_result_with_pipeline(n=30):
     """Build a BattleResult where ModelA has a fitted sklearn pipeline."""
     from sklearn.linear_model import LogisticRegression
     from sklearn.pipeline import Pipeline
+
     from insightml.battle.result import BattleResult, ModelScore
 
     rng = np.random.default_rng(11)
@@ -127,16 +128,13 @@ class TestShapComparisonImportError:
 
         from insightml.compare import shap_compare as sc_module
 
-        original_import = __builtins__.__import__ if hasattr(__builtins__, "__import__") else __import__
+        __builtins__.__import__ if hasattr(__builtins__, "__import__") else __import__
 
+        result, _ = _make_clf_result(n=30)
+        X = _make_small_X(n=30)
         with mock.patch.dict(sys.modules, {"shap": None}):
-            # Patch the import inside the module
             with mock.patch("builtins.__import__", side_effect=ImportError("shap not installed")):
                 with pytest.raises(ImportError):
-                    import importlib
-                    # Force re-evaluation by calling the function with a patched import
-                    result, _ = _make_clf_result(n=30)
-                    X = _make_small_X(n=30)
                     sc_module.shap_comparison(result, X)
 
 

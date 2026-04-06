@@ -104,4 +104,5 @@ class TestModelRegistry:
     def test_repr(self):
         reg = ModelRegistry()
         r = repr(reg)
-        assert "classifiers" in r and "regressors" in r
+        assert "classifiers" in r
+        assert "regressors" in r

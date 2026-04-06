@@ -2,12 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
 from insightml.viz.theme import DIVERGING, QUALITATIVE, make_figure
 
@@ -43,7 +40,7 @@ def histogram(
             fig.add_trace(go.Scatter(
                 x=kde_x, y=kde_y * scale,
                 mode="lines", name="KDE",
-                line=dict(color=QUALITATIVE[1], width=2),
+                line={"color": QUALITATIVE[1], "width": 2},
             ))
         except ImportError:
             pass
@@ -86,7 +83,7 @@ def frequency_bar(
         marker_color=color or QUALITATIVE[0],
     ))
     fig.update_layout(
-        yaxis=dict(autorange="reversed"),
+        yaxis={"autorange": "reversed"},
         xaxis_title="Count",
         height=max(300, len(counts) * 28),
     )
@@ -136,13 +133,13 @@ def scatter(
                 x=x[mask], y=y[mask],
                 mode="markers",
                 name=str(group),
-                marker=dict(size=5, opacity=0.6),
+                marker={"size": 5, "opacity": 0.6},
             ))
     else:
         fig.add_trace(go.Scatter(
             x=x, y=y,
             mode="markers",
-            marker=dict(size=5, color=QUALITATIVE[0], opacity=0.6),
+            marker={"size": 5, "color": QUALITATIVE[0], "opacity": 0.6},
             showlegend=False,
         ))
         if trendline:
@@ -154,7 +151,7 @@ def scatter(
                     x=x_line, y=np.polyval(coeffs, x_line),
                     mode="lines",
                     name="OLS trend",
-                    line=dict(color=QUALITATIVE[1], width=2, dash="dash"),
+                    line={"color": QUALITATIVE[1], "width": 2, "dash": "dash"},
                 ))
 
     fig.update_layout(xaxis_title=x.name, yaxis_title=y.name)
@@ -193,21 +190,21 @@ def gauge(
     fig.add_trace(go.Indicator(
         mode="gauge+number+delta",
         value=value,
-        title=dict(text=title, font=dict(size=18)),
-        gauge=dict(
-            axis=dict(range=[min_val, max_val], tickwidth=1),
-            bar=dict(color=QUALITATIVE[0]),
-            steps=[
-                dict(range=[0, 60], color="#fed7d7"),
-                dict(range=[60, 80], color="#fefcbf"),
-                dict(range=[80, 100], color="#c6f6d5"),
+        title={"text": title, "font": {"size": 18}},
+        gauge={
+            "axis": {"range": [min_val, max_val], "tickwidth": 1},
+            "bar": {"color": QUALITATIVE[0]},
+            "steps": [
+                {"range": [0, 60], "color": "#fed7d7"},
+                {"range": [60, 80], "color": "#fefcbf"},
+                {"range": [80, 100], "color": "#c6f6d5"},
             ],
-            threshold=dict(
-                line=dict(color="red", width=4),
-                thickness=0.75,
-                value=60,
-            ),
-        ),
+            "threshold": {
+                "line": {"color": "red", "width": 4},
+                "thickness": 0.75,
+                "value": 60,
+            },
+        },
     ))
     fig.update_layout(height=300)
     return fig

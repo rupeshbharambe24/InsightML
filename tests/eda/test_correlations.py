@@ -1,7 +1,6 @@
 """Tests for CorrelationAnalysis."""
-import pytest
-import pandas as pd
 import numpy as np
+
 from insightml.eda.correlations import CorrelationAnalysis
 
 

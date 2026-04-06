@@ -124,7 +124,7 @@ class EDAResult(StageResult):
         ov = self.overview
         html_parts = [
             "<div style='font-family:system-ui;max-width:900px'>",
-            f"<h2>InsightML EDA Report</h2>",
+            "<h2>InsightML EDA Report</h2>",
             f"<p>Dataset: <b>{len(self._df):,} rows × {len(self._df.columns)} columns</b>",
         ]
         if self._target:
@@ -217,6 +217,7 @@ def explore(
         eda.missing.patterns()
     """
     import pandas as _pd
+
     from insightml._config import get_config
     from insightml._io import read_data
 

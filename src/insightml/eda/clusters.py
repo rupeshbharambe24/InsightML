@@ -309,7 +309,7 @@ def _scatter_fig(X_pca: np.ndarray, labels: np.ndarray,
             y=X_pca[mask, 1].tolist() if X_pca.shape[1] > 1 else [0.0] * mask.sum(),
             mode="markers",
             name=name,
-            marker=dict(color=color, size=5, opacity=0.6),
+            marker={"color": color, "size": 5, "opacity": 0.6},
         ))
     fig.update_layout(xaxis_title=xlab, yaxis_title=ylab, height=450)
     return fig

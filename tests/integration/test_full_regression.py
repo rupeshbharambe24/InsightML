@@ -10,9 +10,9 @@ is down-sampled to 200 rows so these tests remain fast in CI.
 
 from __future__ import annotations
 
-import pytest
 import pandas as pd
 import plotly.graph_objects as go
+import pytest
 
 import insightml as iml
 from insightml.eda.result import EDAResult

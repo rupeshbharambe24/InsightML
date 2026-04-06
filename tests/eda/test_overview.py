@@ -1,10 +1,8 @@
 """Tests for DataOverview."""
-import pytest
 import pandas as pd
-import numpy as np
-from insightml.eda.overview import DataOverview
+
 from insightml._types import ColumnType
-from insightml._config import InsightMLConfig
+from insightml.eda.overview import DataOverview
 
 
 def test_basic_shape(df_classification):
@@ -47,7 +45,8 @@ def test_figures_built(df_classification):
 def test_summary_string(df_regression):
     ov = DataOverview(df_regression)
     s = ov.summary()
-    assert "rows" in s and "columns" in s
+    assert "rows" in s
+    assert "columns" in s
 
 
 def test_duplicate_detection():

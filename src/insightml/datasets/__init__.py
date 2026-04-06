@@ -10,9 +10,10 @@ Quick start::
 
 from __future__ import annotations
 
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
-from pathlib import Path
 
 _DATA_DIR = Path(__file__).parent / "data"
 

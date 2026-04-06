@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Generator, Iterable, Iterator
 from contextlib import contextmanager
-from typing import Generator, Iterable, Iterator, TypeVar
+from typing import TypeVar
 
 T = TypeVar("T")
 

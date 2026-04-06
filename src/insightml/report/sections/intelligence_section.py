@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from insightml.report.builder import AnalysisReport
 
 
-def build_intelligence_section(report: "AnalysisReport") -> dict[str, Any] | None:
+def build_intelligence_section(report: AnalysisReport) -> dict[str, Any] | None:
     """Build the pre-model intelligence section."""
     if report.intelligence is None:
         return None

@@ -8,7 +8,6 @@ import pytest
 
 from insightml.compare.metrics_table import ComparisonTable
 
-
 # ---------------------------------------------------------------------------
 # Shared helpers
 # ---------------------------------------------------------------------------

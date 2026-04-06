@@ -114,10 +114,10 @@ class MissingDataIntelligence(BaseAnalysisModule):
             y=[str(i) for i in range(len(display_mask))],
             colorscale=[[0, "#54a24b"], [1, "#e45756"]],
             showscale=True,
-            colorbar=dict(
-                tickvals=[0, 1],
-                ticktext=["Present", "Missing"],
-            ),
+            colorbar={
+                "tickvals": [0, 1],
+                "ticktext": ["Present", "Missing"],
+            },
             hoverongaps=False,
         ))
         fig_pattern.update_layout(

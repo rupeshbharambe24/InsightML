@@ -186,7 +186,7 @@ def _numeric_fig(col: pd.Series) -> go.Figure:
             fig.add_trace(go.Scatter(
                 x=kde_x, y=kde_y * scale,
                 mode="lines", name="KDE",
-                line=dict(color=QUALITATIVE[1], width=2),
+                line={"color": QUALITATIVE[1], "width": 2},
             ))
     except Exception:
         pass
@@ -214,7 +214,7 @@ def _freq_fig(col: pd.Series, top_n: int = 20) -> go.Figure:
         text=counts.values, textposition="outside",
     ))
     fig.update_layout(
-        yaxis=dict(autorange="reversed"),
+        yaxis={"autorange": "reversed"},
         xaxis_title="Count", height=max(300, len(counts) * 30),
     )
     return fig

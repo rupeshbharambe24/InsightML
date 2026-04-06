@@ -38,10 +38,10 @@ def shap_comparison(
     """
     try:
         import shap  # noqa: F401
-    except ImportError:
+    except ImportError as exc:
         raise ImportError(
             "SHAP is not installed. Install with: pip install insightml[explain]"
-        )
+        ) from exc
 
     scores = [s for s in battle_result.successful[:top_n] if s.fitted_pipeline is not None]
     if not scores:
@@ -81,8 +81,8 @@ def shap_comparison(
     # Spearman rank correlation between model importances
     rank_corr = pd.DataFrame(index=importance_dict.keys(), columns=importance_dict.keys(), dtype=float)
     models = list(importance_dict.keys())
-    for i, m1 in enumerate(models):
-        for j, m2 in enumerate(models):
+    for _i, m1 in enumerate(models):
+        for _j, m2 in enumerate(models):
             from scipy.stats import spearmanr
             r, _ = spearmanr(importance_dict[m1], importance_dict[m2])
             rank_corr.loc[m1, m2] = round(float(r), 4)
@@ -97,7 +97,6 @@ def shap_comparison(
 def _compute_shap(pipeline, X, score, batch_size: int = 500):
     """Dispatch to appropriate SHAP explainer based on model type."""
     import shap
-    from sklearn.pipeline import Pipeline
 
     model_step = pipeline.named_steps.get("model")
     if model_step is None:

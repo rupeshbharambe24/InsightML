@@ -8,7 +8,6 @@ import pytest
 
 from insightml.intelligence.feature_importance import compute_feature_importance
 
-
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------

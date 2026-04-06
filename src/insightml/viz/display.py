@@ -19,7 +19,7 @@ def detect_environment() -> str:
         if shell == "ZMQInteractiveShell":
             # Check Colab first (Colab also uses ZMQ)
             try:
-                import google.colab  # type: ignore[import]
+                import google.colab  # type: ignore[import]  # noqa: F401
                 return "colab"
             except ImportError:
                 pass

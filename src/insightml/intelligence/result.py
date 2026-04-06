@@ -9,13 +9,13 @@ import pandas as pd
 
 from insightml._config import InsightMLConfig, get_config
 from insightml._types import LeakageWarning
+from insightml.intelligence.feature_importance import compute_feature_importance
 from insightml.intelligence.leakage import detect_leakage
 from insightml.intelligence.multicollinearity import (
     compute_condition_number,
     compute_vif,
     removal_recommendations,
 )
-from insightml.intelligence.feature_importance import compute_feature_importance
 from insightml.intelligence.readiness import ReadinessResult, compute_readiness
 from insightml.intelligence.recommendations import RecommendationResult, recommend_algorithms
 
@@ -184,7 +184,7 @@ class IntelligenceResult:
 
     def summary(self) -> str:
         lines = [
-            f"=== Intelligence Analysis ===",
+            "=== Intelligence Analysis ===",
             f"Readiness: {self.readiness.score:.0f}/100 (Grade {self.readiness.grade})",
             f"Leakage warnings: {len(self.leakage)}",
             f"High VIF features: {(self.vif['vif'] >= 10).sum() if not self.vif.empty else 0}",

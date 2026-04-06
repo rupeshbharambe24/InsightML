@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import time
-import traceback
 import warnings
 from typing import Any
 
@@ -14,8 +13,8 @@ from sklearn.model_selection import KFold, RandomizedSearchCV, StratifiedKFold
 from insightml._config import InsightMLConfig, get_config
 from insightml.battle.param_grids import get_param_grid
 from insightml.battle.preprocessing import PreprocessingPlan, build_full_pipeline
-from insightml.battle.result import BattleResult, ModelScore
 from insightml.battle.registry import ModelRegistry, get_registry
+from insightml.battle.result import BattleResult, ModelScore
 
 
 class ModelTuner:
@@ -231,7 +230,7 @@ def _tune_one(
         )
         return tuned
 
-    except Exception as exc:
+    except Exception:
         elapsed = time.perf_counter() - start
         # Tuning failed: return original score with a warning
         return ModelScore(

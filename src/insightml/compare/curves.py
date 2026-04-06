@@ -2,16 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from insightml.battle.result import BattleResult, ModelScore
+from insightml.battle.result import BattleResult
 from insightml.viz.theme import QUALITATIVE, make_figure
-
 
 # ---------------------------------------------------------------------------
 # Classification curves
@@ -33,7 +30,7 @@ def roc_curves(
     Returns:
         Plotly Figure with all ROC curves overlaid.
     """
-    from sklearn.metrics import roc_curve, roc_auc_score
+    from sklearn.metrics import roc_auc_score, roc_curve
     from sklearn.preprocessing import LabelBinarizer
 
     fig = make_figure(title="ROC Curves (OOF)")
@@ -56,7 +53,7 @@ def roc_curves(
                 fig.add_trace(go.Scatter(
                     x=list(fpr), y=list(tpr),
                     mode="lines", name=f"{score.name} (AUC={auc:.3f})",
-                    line=dict(color=QUALITATIVE[i % len(QUALITATIVE)], width=2),
+                    line={"color": QUALITATIVE[i % len(QUALITATIVE)], "width": 2},
                 ))
             else:
                 lb = LabelBinarizer().fit(y_arr[mask])
@@ -68,7 +65,7 @@ def roc_curves(
                         x=list(fpr), y=list(tpr),
                         mode="lines",
                         name=f"{score.name} cls={cls} (AUC={auc:.3f})",
-                        line=dict(color=QUALITATIVE[(i * len(lb.classes_) + j) % len(QUALITATIVE)], width=1.5),
+                        line={"color": QUALITATIVE[(i * len(lb.classes_) + j) % len(QUALITATIVE)], "width": 1.5},
                     ))
         except Exception:
             continue
@@ -76,11 +73,11 @@ def roc_curves(
     # Diagonal reference line
     fig.add_trace(go.Scatter(
         x=[0, 1], y=[0, 1], mode="lines", name="Random",
-        line=dict(color="gray", width=1, dash="dash"), showlegend=False,
+        line={"color": "gray", "width": 1, "dash": "dash"}, showlegend=False,
     ))
     fig.update_layout(
         xaxis_title="False Positive Rate", yaxis_title="True Positive Rate",
-        xaxis=dict(range=[0, 1]), yaxis=dict(range=[0, 1.02]),
+        xaxis={"range": [0, 1]}, yaxis={"range": [0, 1.02]},
         height=500,
     )
     return fig
@@ -113,14 +110,14 @@ def pr_curves(
             fig.add_trace(go.Scatter(
                 x=list(rec), y=list(prec),
                 mode="lines", name=f"{score.name} (AP={ap:.3f})",
-                line=dict(color=QUALITATIVE[i % len(QUALITATIVE)], width=2),
+                line={"color": QUALITATIVE[i % len(QUALITATIVE)], "width": 2},
             ))
         except Exception:
             continue
 
     fig.update_layout(
         xaxis_title="Recall", yaxis_title="Precision",
-        xaxis=dict(range=[0, 1]), yaxis=dict(range=[0, 1.02]),
+        xaxis={"range": [0, 1]}, yaxis={"range": [0, 1.02]},
         height=500,
     )
     return fig
@@ -210,13 +207,13 @@ def residual_plots(
             go.Scatter(
                 x=preds[mask].tolist(), y=residuals.tolist(),
                 mode="markers",
-                marker=dict(color=QUALITATIVE[idx % len(QUALITATIVE)], size=4, opacity=0.5),
+                marker={"color": QUALITATIVE[idx % len(QUALITATIVE)], "size": 4, "opacity": 0.5},
                 showlegend=False,
             ),
             row=row, col=col,
         )
         # Zero line
-        fig.add_hline(y=0, line=dict(color="gray", dash="dash"), row=row, col=col)
+        fig.add_hline(y=0, line={"color": "gray", "dash": "dash"}, row=row, col=col)
 
     fig.update_layout(height=max(350, rows * 300), title_text="Residual Plots (OOF)")
     return fig
@@ -250,7 +247,7 @@ def actual_vs_predicted(
             go.Scatter(
                 x=y_arr[mask].tolist(), y=preds[mask].tolist(),
                 mode="markers",
-                marker=dict(color=QUALITATIVE[idx % len(QUALITATIVE)], size=4, opacity=0.5),
+                marker={"color": QUALITATIVE[idx % len(QUALITATIVE)], "size": 4, "opacity": 0.5},
                 showlegend=False,
             ),
             row=row, col=col,
@@ -261,7 +258,7 @@ def actual_vs_predicted(
         fig.add_trace(
             go.Scatter(
                 x=[mn, mx], y=[mn, mx], mode="lines",
-                line=dict(color="gray", dash="dash"), showlegend=False,
+                line={"color": "gray", "dash": "dash"}, showlegend=False,
             ),
             row=row, col=col,
         )
@@ -294,7 +291,7 @@ def metric_bar_chart(
     fig.add_trace(go.Bar(
         y=names, x=vals,
         orientation="h",
-        error_x=dict(type="data", array=errs, visible=True),
+        error_x={"type": "data", "array": errs, "visible": True},
         marker_color=[QUALITATIVE[i % len(QUALITATIVE)] for i in range(len(names))],
         text=[f"{v:.4f}" for v in vals],
         textposition="outside",
@@ -302,6 +299,6 @@ def metric_bar_chart(
     fig.update_layout(
         xaxis_title=metric, yaxis_title="Model",
         height=max(300, len(names) * 35 + 100),
-        yaxis=dict(autorange="reversed"),
+        yaxis={"autorange": "reversed"},
     )
     return fig

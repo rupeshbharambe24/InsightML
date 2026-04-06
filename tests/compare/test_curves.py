@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
-import pytest
 import plotly.graph_objects as go
 
 from insightml.compare.curves import (
@@ -15,7 +14,6 @@ from insightml.compare.curves import (
     residual_plots,
     roc_curves,
 )
-
 
 # ---------------------------------------------------------------------------
 # Shared helpers

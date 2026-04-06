@@ -4,11 +4,10 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from insightml.intelligence.readiness import ReadinessResult, compute_readiness
-from insightml.intelligence.multicollinearity import compute_vif, compute_condition_number
 from insightml.intelligence.feature_importance import compute_feature_importance
+from insightml.intelligence.multicollinearity import compute_condition_number, compute_vif
+from insightml.intelligence.readiness import ReadinessResult, compute_readiness
 from insightml.intelligence.recommendations import recommend_algorithms
-
 
 # ---------------------------------------------------------------------------
 # Fixtures

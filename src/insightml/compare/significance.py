@@ -74,7 +74,7 @@ def mcnemar_matrix(
         text=p_df.values,
         texttemplate="%{text:.3f}",
         hovertemplate="Model A: %{y}<br>Model B: %{x}<br>p-value: %{z:.4f}<extra></extra>",
-        colorbar=dict(title="p-value"),
+        colorbar={"title": "p-value"},
     ))
     fig.update_layout(height=max(350, n * 50 + 100))
     return {"p_matrix": p_df, "figure": fig}
@@ -153,7 +153,7 @@ def corrected_ttest_matrix(
         text=p_df.values,
         texttemplate="%{text:.3f}",
         hovertemplate="Model A: %{y}<br>Model B: %{x}<br>p-value: %{z:.4f}<extra></extra>",
-        colorbar=dict(title="p-value"),
+        colorbar={"title": "p-value"},
     ))
     fig.update_layout(height=max(350, len(names) * 50 + 100))
     return {"p_matrix": p_df, "figure": fig}

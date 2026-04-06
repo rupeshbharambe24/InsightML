@@ -8,15 +8,15 @@ if TYPE_CHECKING:
     from insightml.report.builder import AnalysisReport
 
 
-def build_summary_section(report: "AnalysisReport") -> dict[str, Any]:
+def build_summary_section(report: AnalysisReport) -> dict[str, Any]:
     """Build the executive summary section data dict.
 
     Returns a dict with keys: title, anchor, content (HTML string).
     """
     from insightml.report.narrative import (
-        executive_summary,
         data_recommendations,
         ensemble_recommendation,
+        executive_summary,
     )
 
     # Gather key metrics

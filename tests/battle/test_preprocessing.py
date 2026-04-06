@@ -27,7 +27,7 @@ def simple_df():
 @pytest.fixture
 def df_with_missing(simple_df):
     df = simple_df.copy()
-    df.loc[rng_idx := np.random.default_rng(1).integers(0, 100, 20), "age"] = np.nan
+    df.loc[_rng_idx := np.random.default_rng(1).integers(0, 100, 20), "age"] = np.nan
     return df
 
 

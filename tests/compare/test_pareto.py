@@ -4,11 +4,9 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
-import pytest
 import plotly.graph_objects as go
 
 from insightml.compare.pareto import _compute_pareto, get_pareto_models, pareto_front
-
 
 # ---------------------------------------------------------------------------
 # Shared helpers

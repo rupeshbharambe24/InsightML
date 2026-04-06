@@ -9,8 +9,8 @@ fixture to avoid re-running the pipeline for every test function.
 
 from __future__ import annotations
 
-import pytest
 import pandas as pd
+import pytest
 
 import insightml as iml
 from insightml.eda.result import EDAResult

@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import numpy as np
-import pandas as pd
 import plotly.graph_objects as go
 
 from insightml.battle.result import BattleResult
@@ -49,7 +47,7 @@ def pareto_front(battle_result: BattleResult) -> go.Figure:
             x=[train_times[i] for i in non_pareto],
             y=[metric_vals[i] for i in non_pareto],
             mode="markers",
-            marker=dict(color="lightgray", size=10, symbol="circle"),
+            marker={"color": "lightgray", "size": 10, "symbol": "circle"},
             text=[names[i] for i in non_pareto],
             hovertemplate="%{text}<br>Time: %{x:.2f}s<br>Score: %{y:.4f}<extra></extra>",
             name="Sub-optimal",
@@ -60,7 +58,7 @@ def pareto_front(battle_result: BattleResult) -> go.Figure:
         fig.add_trace(go.Scatter(
             x=pareto_times, y=pareto_metrics,
             mode="lines",
-            line=dict(color="#4c78a8", width=1.5, dash="dot"),
+            line={"color": "#4c78a8", "width": 1.5, "dash": "dot"},
             showlegend=False,
         ))
 
@@ -70,11 +68,11 @@ def pareto_front(battle_result: BattleResult) -> go.Figure:
             x=[train_times[i] for i in pareto_idx],
             y=[metric_vals[i] for i in pareto_idx],
             mode="markers+text",
-            marker=dict(color=QUALITATIVE[0], size=14, symbol="star",
-                        line=dict(color="black", width=1)),
+            marker={"color": QUALITATIVE[0], "size": 14, "symbol": "star",
+                        "line": {"color": "black", "width": 1}},
             text=[names[i] for i in pareto_idx],
             textposition="top center",
-            textfont=dict(size=10),
+            textfont={"size": 10},
             hovertemplate="%{text}<br>Time: %{x:.2f}s<br>Score: %{y:.4f}<extra></extra>",
             name="Pareto optimal",
         ))
@@ -83,7 +81,7 @@ def pareto_front(battle_result: BattleResult) -> go.Figure:
         xaxis_title="Training Time (s)",
         yaxis_title=primary,
         height=500,
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        legend={"orientation": "h", "yanchor": "bottom", "y": 1.02, "xanchor": "right", "x": 1},
     )
     return fig
 

@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
@@ -17,7 +15,7 @@ def analyze_errors(
     y_true: pd.Series | np.ndarray,
     X: pd.DataFrame | None = None,
     hard_sample_pct: float = 0.10,
-) -> "ErrorAnalysisResult":
+) -> ErrorAnalysisResult:
     """Run full cross-model error analysis.
 
     Args:
@@ -150,7 +148,7 @@ class ErrorAnalysisResult:
             colorscale="Reds", zmin=0, zmax=1,
             text=self.disagreement.values,
             texttemplate="%{text:.2f}",
-            colorbar=dict(title="Disagreement"),
+            colorbar={"title": "Disagreement"},
         ))
         fig.update_layout(height=max(350, len(self.models) * 50 + 100))
         return fig
@@ -166,7 +164,7 @@ class ErrorAnalysisResult:
             colorscale="Blues", zmin=0,
             text=self.complementarity.values,
             texttemplate="%{text:.2f}",
-            colorbar=dict(title="Fraction"),
+            colorbar={"title": "Fraction"},
         ))
         fig.update_layout(height=max(350, len(self.models) * 50 + 100))
         return fig

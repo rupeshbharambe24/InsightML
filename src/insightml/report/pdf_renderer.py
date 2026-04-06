@@ -23,7 +23,7 @@ if TYPE_CHECKING:
     from insightml.report.builder import AnalysisReport
 
 
-def render_pdf_report(report: "AnalysisReport") -> bytes:
+def render_pdf_report(report: AnalysisReport) -> bytes:
     """Render *report* as a PDF and return the raw bytes.
 
     Internally calls :func:`~insightml.report.html_renderer.render_html_report`
@@ -55,7 +55,7 @@ def render_pdf_report(report: "AnalysisReport") -> bytes:
     return pdf
 
 
-def export_pdf(report: "AnalysisReport", path: str | Path) -> Path:
+def export_pdf(report: AnalysisReport, path: str | Path) -> Path:
     """Export *report* as a PDF file.
 
     Args:

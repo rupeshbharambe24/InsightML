@@ -23,16 +23,16 @@ Quick start::
 
 from __future__ import annotations
 
-from insightml._version import __version__
-from insightml._config import InsightMLConfig, config_context, get_config, set_config
 from insightml._compat import to_pandas
-from insightml.exceptions import InsightMLError
-from insightml.eda import explore
+from insightml._config import InsightMLConfig, config_context, get_config, set_config
+from insightml._version import __version__
 from insightml.battle import battle
-from insightml.intelligence import analyze_intelligence
 from insightml.compare import ModelComparator
+from insightml.datasets import load_housing, load_titanic
+from insightml.eda import explore
+from insightml.exceptions import InsightMLError
+from insightml.intelligence import analyze_intelligence
 from insightml.report import AnalysisReport
-from insightml.datasets import load_titanic, load_housing
 
 __all__ = [
     "__version__",

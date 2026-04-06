@@ -114,7 +114,7 @@ class TestBattleRunner:
 
     def test_missing_target_raises(self, clf_df):
         runner = BattleRunner()
-        with pytest.raises(Exception):
+        with pytest.raises(KeyError):
             runner.run(clf_df, target="nonexistent")
 
     def test_repr(self, clf_df):

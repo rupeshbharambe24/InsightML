@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from insightml.report.builder import AnalysisReport
 
 
-def build_eda_section(report: "AnalysisReport") -> dict[str, Any] | None:
+def build_eda_section(report: AnalysisReport) -> dict[str, Any] | None:
     """Build the EDA section data dict.
 
     Returns None if no EDA result is available.

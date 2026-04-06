@@ -40,7 +40,7 @@ class BivariateAnalysis(BaseAnalysisModule):
         target = self._target
 
         col_types = {c: infer_column_type(df[c], config) for c in df.columns}
-        all_cols = list(df.columns)
+        list(df.columns)
 
         # --- Limit pairs ---
         cols_to_analyze = _select_columns(df, col_types, target, config.max_bivariate_pairs)
@@ -229,7 +229,7 @@ def _build_pair_figure(
         fig = make_figure(title=f"{c1} vs {c2}")
         fig.add_trace(go.Scatter(
             x=x, y=y, mode="markers",
-            marker=dict(color=QUALITATIVE[0], size=5, opacity=0.5),
+            marker={"color": QUALITATIVE[0], "size": 5, "opacity": 0.5},
             showlegend=False,
         ))
         if len(x) >= 2:
@@ -238,7 +238,7 @@ def _build_pair_figure(
             fig.add_trace(go.Scatter(
                 x=x_line, y=np.polyval(coeffs, x_line),
                 mode="lines", name="OLS",
-                line=dict(color=QUALITATIVE[1], width=2, dash="dash"),
+                line={"color": QUALITATIVE[1], "width": 2, "dash": "dash"},
             ))
         fig.update_layout(xaxis_title=c1, yaxis_title=c2, height=350)
         return fig

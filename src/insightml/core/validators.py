@@ -80,7 +80,7 @@ def infer_column_type(
     if col.dtype == bool or pd.api.types.is_bool_dtype(col):
         return ColumnType.BOOLEAN
     unique_vals = set(col.dropna().unique())
-    if unique_vals <= {True, False, 0, 1, "True", "False", "true", "false"}:
+    if unique_vals <= {True, False, "True", "False", "true", "false"}:
         if nu <= 2:
             return ColumnType.BOOLEAN
 

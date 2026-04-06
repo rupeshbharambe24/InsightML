@@ -1,8 +1,8 @@
 """EDA stage — deep exploratory data analysis."""
 
-from insightml.eda.result import EDAResult, explore
-from insightml.core.base import BaseStage, StageResult
+from insightml.core.base import BaseStage
 from insightml.core.data_container import DataContainer
+from insightml.eda.result import EDAResult, explore
 
 
 class EDAStage(BaseStage):

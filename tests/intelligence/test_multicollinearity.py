@@ -4,14 +4,12 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
-import pytest
 
 from insightml.intelligence.multicollinearity import (
     compute_condition_number,
     compute_vif,
     removal_recommendations,
 )
-
 
 # ---------------------------------------------------------------------------
 # Helpers

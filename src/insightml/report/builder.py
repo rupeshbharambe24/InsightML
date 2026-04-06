@@ -3,11 +3,9 @@
 from __future__ import annotations
 
 import webbrowser
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
-
-import pandas as pd
 
 
 @dataclass
@@ -82,7 +80,7 @@ class AnalysisReport:
     def summary(self) -> str:
         """Return a plain-text summary of the full analysis."""
         parts: list[str] = [
-            f"=== InsightML Analysis Report ===",
+            "=== InsightML Analysis Report ===",
             f"Task: {self.task}  |  Target: {self.target}",
             f"Dataset: {self.n_samples:,} samples × {self.n_features} features",
         ]

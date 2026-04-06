@@ -1,7 +1,7 @@
 """Tests for StatisticalTests."""
-import pytest
-import pandas as pd
 import numpy as np
+import pandas as pd
+
 from insightml.eda.statistical_tests import StatisticalTests
 
 

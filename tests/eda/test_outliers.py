@@ -1,6 +1,4 @@
 """Tests for OutlierDetection."""
-import pytest
-import numpy as np
 from insightml.eda.outliers import OutlierDetection
 
 
@@ -20,7 +18,7 @@ def test_zscore_detects_extremes(df_with_outliers):
 def test_consensus_non_negative(df_regression):
     od = OutlierDetection(df_regression)
     consensus = od.consensus()
-    for col, result in consensus.items():
+    for _col, result in consensus.items():
         assert result["n_outliers"] >= 0
 
 

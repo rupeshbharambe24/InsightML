@@ -9,7 +9,6 @@ import pytest
 from insightml.battle.result import BattleResult, ModelScore
 from insightml.battle.tuner import ModelTuner
 
-
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------

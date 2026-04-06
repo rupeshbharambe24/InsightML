@@ -190,7 +190,7 @@ class StatisticalTests(BaseAnalysisModule):
             f_stat, p_value = stats.f_oneway(*groups.values())
             return {
                 "test_used": "ANOVA",
-                "reason": "All groups normal + equal variances (Levene p={:.3f})".format(levene_p),
+                "reason": f"All groups normal + equal variances (Levene p={levene_p:.3f})",
                 "statistic": round(float(f_stat), 4),
                 "p_value": round(float(p_value), 4),
                 "significant": float(p_value) < alpha,
@@ -200,7 +200,7 @@ class StatisticalTests(BaseAnalysisModule):
             h_stat, p_value = stats.kruskal(*groups.values())
             reason = (
                 "Non-normal distribution" if not all_normal
-                else "Unequal variances (Levene p={:.3f})".format(levene_p)
+                else f"Unequal variances (Levene p={levene_p:.3f})"
             )
             return {
                 "test_used": "Kruskal-Wallis",
@@ -299,14 +299,14 @@ def _qq_plot(series: pd.Series, col_name: str) -> go.Figure:
         x=list(osm), y=list(osr),
         mode="markers",
         name="Sample quantiles",
-        marker=dict(color=QUALITATIVE[0], size=4, opacity=0.7),
+        marker={"color": QUALITATIVE[0], "size": 4, "opacity": 0.7},
     ))
     x_line = [min(osm), max(osm)]
     fig.add_trace(go.Scatter(
         x=x_line,
         y=[slope * x + intercept for x in x_line],
         mode="lines", name="Normal line",
-        line=dict(color=QUALITATIVE[1], width=2, dash="dash"),
+        line={"color": QUALITATIVE[1], "width": 2, "dash": "dash"},
     ))
     fig.update_layout(
         xaxis_title="Theoretical Quantiles",

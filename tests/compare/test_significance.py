@@ -2,11 +2,9 @@
 
 import numpy as np
 import pandas as pd
-import pytest
 
 from insightml.compare.pareto import _compute_pareto, get_pareto_models, pareto_front
 from insightml.compare.significance import corrected_ttest_matrix, mcnemar_matrix
-
 
 # ---------------------------------------------------------------------------
 # Shared fixtures — build a minimal BattleResult with OOF predictions
@@ -74,7 +72,8 @@ class TestMcNemar:
     def test_returns_dict(self):
         result, y = _make_clf_result()
         out = mcnemar_matrix(result, y)
-        assert "p_matrix" in out and "figure" in out
+        assert "p_matrix" in out
+        assert "figure" in out
 
     def test_p_matrix_shape(self):
         result, y = _make_clf_result()
@@ -106,7 +105,8 @@ class TestCorrectedTTest:
     def test_returns_dict(self):
         result, y = _make_reg_result()
         out = corrected_ttest_matrix(result, y)
-        assert "p_matrix" in out and "figure" in out
+        assert "p_matrix" in out
+        assert "figure" in out
 
     def test_symmetric(self):
         result, y = _make_reg_result()

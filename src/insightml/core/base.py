@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING, Any
 
 import pandas as pd
 
-from insightml.viz.display import display_html, show_in_browser
+from insightml.viz.display import display_html
 
 if TYPE_CHECKING:
     from insightml._config import InsightMLConfig
@@ -88,8 +88,8 @@ class BaseStage(ABC):
     @abstractmethod
     def run(
         self,
-        container: "DataContainer",
-        context: "PipelineContext",
+        container: DataContainer,
+        context: PipelineContext,
     ) -> StageResult:
         """Execute the stage and return its result.
 
@@ -104,8 +104,8 @@ class BaseStage(ABC):
 
     def timed_run(
         self,
-        container: "DataContainer",
-        context: "PipelineContext",
+        container: DataContainer,
+        context: PipelineContext,
     ) -> StageResult:
         """Wrap `run()` with timing and progress reporting."""
         start = time.perf_counter()
@@ -128,10 +128,10 @@ class PipelineContext:
     intelligence_result: Any | None = None  # IntelligenceResult
     battle_result: Any | None = None        # BattleResult
     compare_result: Any | None = None       # CompareResult
-    config: "InsightMLConfig" = field(
+    config: InsightMLConfig = field(
         default_factory=lambda: _default_config()
     )
-    progress: "ProgressTracker | None" = None
+    progress: ProgressTracker | None = None
 
     def __post_init__(self) -> None:
         if self.progress is None:
@@ -139,6 +139,6 @@ class PipelineContext:
             self.progress = ProgressTracker()
 
 
-def _default_config() -> "InsightMLConfig":
+def _default_config() -> InsightMLConfig:
     from insightml._config import get_config
     return get_config()

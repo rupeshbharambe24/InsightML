@@ -27,12 +27,10 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
-import pytest
 import plotly.graph_objects as go
 
 from insightml.compare.comparator import ModelComparator
 from insightml.compare.metrics_table import ComparisonTable
-
 
 # ---------------------------------------------------------------------------
 # Shared helpers

@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
-import json
-from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING
 
 import plotly.graph_objects as go
+
+if TYPE_CHECKING:
+    from insightml.report.builder import AnalysisReport
 
 # ---------------------------------------------------------------------------
 # HTML template (embedded to avoid package-data complexity)
@@ -209,7 +210,7 @@ def _metric_cards_html(metrics: dict[str, float]) -> str:
 # ---------------------------------------------------------------------------
 
 
-def render_html_report(report: "AnalysisReport") -> str:  # noqa: F821
+def render_html_report(report: AnalysisReport) -> str:  # noqa: F821
     """Render a self-contained HTML report from an AnalysisReport.
 
     Args:
@@ -219,20 +220,21 @@ def render_html_report(report: "AnalysisReport") -> str:  # noqa: F821
         HTML string (self-contained, embeds all figures).
     """
     from datetime import datetime
+
     from insightml._version import __version__
 
     try:
         from jinja2 import Environment
         env = Environment(autoescape=False)
         template = env.from_string(_HTML_TEMPLATE)
-    except ImportError:
-        raise ImportError("jinja2 is required for HTML reports: pip install insightml")
+    except ImportError as exc:
+        raise ImportError("jinja2 is required for HTML reports: pip install insightml") from exc
 
     sections = _build_sections(report)
 
     html = template.render(
         title=f"InsightML Report — {report.target}",
-        subtitle=f"Automated ML analysis report",
+        subtitle="Automated ML analysis report",
         task=report.task or "unknown",
         target=report.target or "—",
         n_samples=report.n_samples,
@@ -244,7 +246,7 @@ def render_html_report(report: "AnalysisReport") -> str:  # noqa: F821
     return html
 
 
-def _build_sections(report: "AnalysisReport") -> list[dict]:
+def _build_sections(report: AnalysisReport) -> list[dict]:
     sections = []
 
     # --- Executive Summary ---
@@ -280,7 +282,9 @@ def _build_sections(report: "AnalysisReport") -> list[dict]:
 
 def _section_executive_summary(report) -> dict:
     from insightml.report.narrative import (
-        data_recommendations, ensemble_recommendation, executive_summary
+        data_recommendations,
+        ensemble_recommendation,
+        executive_summary,
     )
 
     leakage_cols = []
@@ -397,7 +401,7 @@ def _section_eda(report) -> dict:
         overview = report.eda.overview
         summary_str = overview.summary()
         body_parts.append(f"<p>{summary_str}</p>")
-        for name, fig in list(overview.figures.items())[:4]:
+        for _name, fig in list(overview.figures.items())[:4]:
             body_parts.append(_fig_html(fig))
     except Exception:
         body_parts.append("<p>EDA overview unavailable.</p>")
@@ -443,7 +447,7 @@ def _section_intelligence(report) -> dict:
             high_vif = vif_df[vif_df["severity"] == "high"]
             if not high_vif.empty:
                 body_parts.append(
-                    f"<h4>Multicollinearity (VIF≥10)</h4>"
+                    "<h4>Multicollinearity (VIF≥10)</h4>"
                     + _table_html(high_vif)
                 )
     except Exception:
@@ -482,7 +486,7 @@ def _section_battle(report) -> dict:
         best = result.best
         if best:
             metrics_html = _metric_cards_html(
-                {k: v for k, v in list(best.metrics.items())[:4]}
+                dict(list(best.metrics.items())[:4])
             )
             body_parts.append(
                 f"<h4>Best Model: {best.name}</h4>{metrics_html}"
@@ -519,7 +523,7 @@ def _section_compare(report) -> dict:
 
     # Pareto
     try:
-        body_parts.append(f"<h4>Pareto Front</h4>")
+        body_parts.append("<h4>Pareto Front</h4>")
         body_parts.append(_fig_html(comp.pareto, height=400))
         body_parts.append(f"<p>Pareto-optimal: <strong>{', '.join(comp.pareto_models)}</strong></p>")
     except Exception:
