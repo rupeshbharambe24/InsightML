@@ -16,6 +16,10 @@
 
 </div>
 
+<p align="center">
+  <img src="docs/assets/report_preview.png" alt="InsightML HTML Report Preview" width="90%">
+</p>
+
 ---
 
 ## Why InsightML?

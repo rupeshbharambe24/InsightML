@@ -16,10 +16,11 @@ import numpy as np
 import pandas as pd
 
 _DATA_DIR = Path(__file__).parent / "data"
+_CACHE_DIR = Path.home() / ".insightml" / "datasets"
 
 
 # ---------------------------------------------------------------------------
-# Titanic
+# Titanic (bundled — small, 24KB)
 # ---------------------------------------------------------------------------
 
 
@@ -69,7 +70,7 @@ def _synthetic_titanic(n: int = 200) -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------------------
-# California Housing
+# California Housing (fetched on first use, cached locally)
 # ---------------------------------------------------------------------------
 
 
@@ -81,24 +82,31 @@ def load_housing() -> pd.DataFrame:
     ``AveRooms``, ``AveBedrms``, ``Population``, ``AveOccup``,
     ``Latitude``, ``Longitude``.
 
-    Loads from a bundled CSV if present; falls back to sklearn's
-    ``fetch_california_housing``; then to a small synthetic stand-in.
+    On first call, fetches from scikit-learn and caches to
+    ``~/.insightml/datasets/housing.csv``. Subsequent calls load from cache.
+    Falls back to a small synthetic stand-in if sklearn is unavailable.
 
     Returns:
         pandas DataFrame, target column: ``MedHouseVal``.
     """
-    bundled = _DATA_DIR / "housing.csv"
-    if bundled.exists():
-        return pd.read_csv(bundled)
+    # 1. Check local cache
+    cached = _CACHE_DIR / "housing.csv"
+    if cached.exists():
+        return pd.read_csv(cached)
 
+    # 2. Fetch from sklearn and cache
     try:
         from sklearn.datasets import fetch_california_housing
 
         housing = fetch_california_housing(as_frame=True)
-        return housing.frame.copy()
+        df = housing.frame.copy()
+        _CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        df.to_csv(cached, index=False)
+        return df
     except Exception:
         pass
 
+    # 3. Synthetic fallback (CI / offline)
     return _synthetic_housing()
 
 
