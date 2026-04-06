@@ -120,7 +120,7 @@ class ModelTuner:
                 task=task,
                 param_grid=grid,
                 n_iter=self.n_iter,
-                random_state=config.battle_random_state,
+                random_state=config.random_state,
                 registry=self._registry,
             )
             tuned_map[score.name] = tuned

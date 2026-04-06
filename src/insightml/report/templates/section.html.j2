@@ -1,0 +1,16 @@
+{# Renders a single report section as a collapsible card #}
+<section id="{{ section.anchor }}" class="card">
+  {% if section.get('collapsible', True) %}
+  <details {% if section.get('open', True) %}open{% endif %}>
+    <summary>{{ section.title }}</summary>
+    <div class="card-body">
+      {{ section.content | safe }}
+    </div>
+  </details>
+  {% else %}
+  <div class="card-header"><h2>{{ section.title }}</h2></div>
+  <div class="card-body">
+    {{ section.content | safe }}
+  </div>
+  {% endif %}
+</section>

@@ -1,0 +1,11 @@
+{# Sticky sidebar table of contents #}
+<nav class="sidebar" aria-label="Table of contents">
+  <h2>Contents</h2>
+  <ul>
+    {% for section in sections %}
+    <li>
+      <a href="#{{ section.anchor }}">{{ section.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</nav>

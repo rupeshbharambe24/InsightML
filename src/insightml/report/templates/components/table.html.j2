@@ -1,0 +1,23 @@
+{# Renders a pandas DataFrame as an HTML table #}
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        {% if show_index %}<th>{{ index_label | default('') }}</th>{% endif %}
+        {% for col in columns %}
+        <th>{{ col }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr {% if loop.index0 == best_row_idx %}class="best-row"{% endif %}>
+        {% if show_index %}<td>{{ row.index }}</td>{% endif %}
+        {% for val in row.values %}
+        <td>{{ val }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

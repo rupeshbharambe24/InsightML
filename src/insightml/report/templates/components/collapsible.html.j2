@@ -1,0 +1,9 @@
+{# HTML5 collapsible details/summary component #}
+<details {% if open %}open{% endif %} class="collapsible">
+  <summary class="collapsible-header">
+    {{ summary_text }}
+  </summary>
+  <div class="collapsible-body">
+    {{ content | safe }}
+  </div>
+</details>

@@ -119,6 +119,7 @@ class FeatureInteractions(BaseAnalysisModule):
         return figs
 
     def summary(self) -> str:
+        self._ensure_computed()
         if self._results.get("skipped"):
             return "Interaction analysis skipped (insufficient numeric columns)."
         pairs = self._results["pairs"]

@@ -1,0 +1,286 @@
+/* InsightML Report Stylesheet
+   Used as external reference; the html_renderer.py embeds these styles inline.
+*/
+
+:root {
+  --primary: #4c78a8;
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --border: #dee2e6;
+  --text: #212529;
+  --muted: #6c757d;
+  --success: #54a24b;
+  --warning: #f58518;
+  --danger: #e45756;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* -----------------------------------------------------------------------
+   Reset & Base
+   ----------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* -----------------------------------------------------------------------
+   Layout
+   ----------------------------------------------------------------------- */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  min-width: 240px;
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 1.5rem 1rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  font-size: 0.875rem;
+}
+
+.sidebar h2 {
+  color: #90cdf4;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sidebar ul { list-style: none; }
+.sidebar li { margin: 0.2rem 0; }
+.sidebar a {
+  color: #cbd5e0;
+  text-decoration: none;
+  display: block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+.sidebar a:hover { background: #4a5568; color: #fff; }
+.sidebar a.active { background: #4c78a8; color: #fff; }
+
+/* Main content */
+.main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1100px;
+  overflow-x: hidden;
+}
+
+/* -----------------------------------------------------------------------
+   Report Header
+   ----------------------------------------------------------------------- */
+.report-header {
+  background: linear-gradient(135deg, var(--primary), #6b9fd4);
+  color: white;
+  padding: 1.75rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(76, 120, 168, 0.3);
+}
+
+.report-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.report-header p {
+  opacity: 0.88;
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2em 0.7em;
+  border-radius: 20px;
+  font-size: 0.73rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.22);
+  margin: 0.3rem 0.2rem 0 0;
+  letter-spacing: 0.03em;
+}
+
+/* -----------------------------------------------------------------------
+   Cards
+   ----------------------------------------------------------------------- */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-header {
+  padding: 0.9rem 1.25rem;
+  background: #f1f3f5;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-header h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.card-body { padding: 1.25rem; }
+
+/* -----------------------------------------------------------------------
+   Collapsible (details/summary)
+   ----------------------------------------------------------------------- */
+details > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.9rem 1.25rem;
+  background: #f1f3f5;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 1.05rem;
+  user-select: none;
+  transition: background 0.15s;
+}
+
+details > summary::-webkit-details-marker { display: none; }
+details > summary::before {
+  content: "▶\00a0";
+  font-size: 0.65em;
+  color: var(--muted);
+  display: inline-block;
+  transition: transform 0.2s;
+}
+details[open] > summary::before { content: "▼\00a0"; }
+details > summary:hover { background: #e9ecef; }
+details .card-body { padding: 1.25rem; }
+
+/* -----------------------------------------------------------------------
+   Tables
+   ----------------------------------------------------------------------- */
+.table-wrap { overflow-x: auto; margin: 0.5rem 0; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+th {
+  background: #f1f3f5;
+  font-weight: 600;
+  padding: 0.5rem 0.8rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+
+td {
+  padding: 0.45rem 0.8rem;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+tr:hover td { background: #f8f9fa; }
+tr.best-row td { font-weight: 700; color: var(--success); }
+
+/* -----------------------------------------------------------------------
+   Metrics grid
+   ----------------------------------------------------------------------- */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.metric-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: box-shadow 0.15s;
+}
+.metric-card:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+.metric-card .value { font-size: 1.7rem; font-weight: 700; color: var(--primary); }
+.metric-card .label { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* -----------------------------------------------------------------------
+   Recommendation list
+   ----------------------------------------------------------------------- */
+.rec-list { list-style: none; }
+.rec-list li {
+  padding: 0.5rem 0.8rem;
+  margin: 0.4rem 0;
+  border-left: 3px solid var(--primary);
+  background: #f0f4ff;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.9rem;
+}
+.rec-list li.warning { border-color: var(--warning); background: #fff8ec; }
+.rec-list li.danger { border-color: var(--danger); background: #fff5f5; }
+.rec-list li.success { border-color: var(--success); background: #f0faf0; }
+
+/* -----------------------------------------------------------------------
+   Grade badge
+   ----------------------------------------------------------------------- */
+.grade-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.grade-A { background: var(--success); }
+.grade-B { background: var(--primary); }
+.grade-C { background: var(--warning); }
+.grade-D { background: #f47c3c; }
+.grade-F { background: var(--danger); }
+
+/* -----------------------------------------------------------------------
+   Plotly chart containers
+   ----------------------------------------------------------------------- */
+.chart-container { margin: 0.5rem 0 1rem; }
+.chart-title { font-size: 0.85rem; font-weight: 600; color: var(--muted); margin-bottom: 0.4rem; }
+.chart-caption { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; font-style: italic; }
+
+/* -----------------------------------------------------------------------
+   Footer
+   ----------------------------------------------------------------------- */
+.report-footer {
+  margin-top: 3rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* -----------------------------------------------------------------------
+   Responsive: hide sidebar on small screens
+   ----------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { padding: 1rem; }
+  .report-header h1 { font-size: 1.4rem; }
+}

@@ -1,0 +1,12 @@
+{# Wraps a Plotly chart HTML snippet in a styled container #}
+<div class="chart-container" style="{% if height %}height: {{ height }}px;{% endif %}">
+  {% if title %}
+  <h4 class="chart-title">{{ title }}</h4>
+  {% endif %}
+  <div class="chart-inner">
+    {{ chart_html | safe }}
+  </div>
+  {% if caption %}
+  <p class="chart-caption">{{ caption }}</p>
+  {% endif %}
+</div>
