@@ -25,12 +25,14 @@ from __future__ import annotations
 
 from insightml._version import __version__
 from insightml._config import InsightMLConfig, config_context, get_config, set_config
+from insightml._compat import to_pandas
 from insightml.exceptions import InsightMLError
 from insightml.eda import explore
 from insightml.battle import battle
 from insightml.intelligence import analyze_intelligence
 from insightml.compare import ModelComparator
 from insightml.report import AnalysisReport
+from insightml.datasets import load_titanic, load_housing
 
 __all__ = [
     "__version__",
@@ -41,6 +43,11 @@ __all__ = [
     "analyze",
     "ModelComparator",
     "AnalysisReport",
+    # Datasets
+    "load_titanic",
+    "load_housing",
+    # Compat
+    "to_pandas",
     # Config
     "InsightMLConfig",
     "get_config",

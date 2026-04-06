@@ -1,0 +1,81 @@
+site_name: InsightML
+site_description: The missing middle layer between EDA and AutoML
+site_url: https://insightml.readthedocs.io
+repo_url: https://github.com/rupesh/insightML
+repo_name: insightML
+edit_uri: edit/main/docs/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: true
+            show_root_heading: true
+            docstring_style: google
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - User Guide:
+      - Deep EDA: user-guide/eda.md
+      - Model Battle: user-guide/model-battle.md
+      - Intelligence Bridge: user-guide/intelligence.md
+      - Comparative Analysis: user-guide/compare.md
+      - HTML Reports: user-guide/reports.md
+  - API Reference:
+      - insightml: api/index.md
+      - EDA: api/eda.md
+      - Battle: api/battle.md
+      - Intelligence: api/intelligence.md
+      - Compare: api/compare.md
+      - Report: api/report.md
+  - Changelog: changelog.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rupesh/insightML
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/insightml/
