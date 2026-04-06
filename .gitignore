@@ -79,5 +79,8 @@ site/
 *.bak
 *.stackdump
 
+# CatBoost training cache
+catboost_info/
+
 # Windows
 desktop.ini

@@ -1,7 +1,7 @@
 site_name: InsightML
 site_description: The missing middle layer between EDA and AutoML
 site_url: https://insightml.readthedocs.io
-repo_url: https://github.com/rupesh/insightML
+repo_url: https://github.com/rupeshbharambe24/InsightML
 repo_name: insightML
 edit_uri: edit/main/docs/docs/
 
@@ -76,6 +76,6 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/rupesh/insightML
+      link: https://github.com/rupeshbharambe24/InsightML
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/insightml/
