@@ -1,4 +1,4 @@
-"""Stage 3: Multi-model training — iml.battle() entry point."""
+"""Stage 3: Multi-model training — dml.battle() entry point."""
 
 from dissectml.battle.catalog import MODEL_CATALOG, ModelEntry, get_classifiers, get_regressors
 from dissectml.battle.preprocessing import (
@@ -59,15 +59,15 @@ def battle(
         n_iter: Search iterations per model when ``tune=True``.
         cv: CV folds (default: config.battle_cv_folds = 5).
         n_jobs: Parallel workers (default: config.battle_n_jobs = -1).
-        eda_result: Optional EDAResult from ``iml.explore()`` to inform preprocessing.
+        eda_result: Optional EDAResult from ``dml.explore()`` to inform preprocessing.
 
     Returns:
         :class:`BattleResult` with leaderboard and OOF predictions.
 
     Example::
 
-        import dissectml as iml
-        result = iml.battle(df, target="survived")
+        import dissectml as dml
+        result = dml.battle(df, target="survived")
         result.leaderboard()
         result.best
     """

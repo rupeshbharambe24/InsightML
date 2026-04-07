@@ -41,15 +41,15 @@ def analyze_intelligence(
         target: Target column name.
         task: ``"classification"`` or ``"regression"``. Inferred if None.
         datetime_col: Optional datetime column for temporal leakage check.
-        eda_result: Optional output of ``iml.explore()`` for richer signals.
+        eda_result: Optional output of ``dml.explore()`` for richer signals.
 
     Returns:
         :class:`IntelligenceResult`
 
     Example::
 
-        import dissectml as iml
-        intel = iml.analyze_intelligence(df, target="survived")
+        import dissectml as dml
+        intel = dml.analyze_intelligence(df, target="survived")
         intel.readiness.summary()
         intel.leakage
         intel.recommendations.top(3)

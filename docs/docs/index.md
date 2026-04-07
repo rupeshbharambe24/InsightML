@@ -5,10 +5,10 @@
 DissectML (`dissectml` on PyPI) gives data scientists a single, unified pipeline from raw data to publication-ready insights — in as few as 3 function calls.
 
 ```python
-import dissectml as iml
+import dissectml as dml
 
-df = iml.load_titanic()
-report = iml.analyze(df, target="survived")
+df = dml.load_titanic()
+report = dml.analyze(df, target="survived")
 report.export("report.html")
 ```
 

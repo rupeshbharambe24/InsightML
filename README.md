@@ -106,16 +106,16 @@ notebooks.
 ## Quick Start
 
 ```python
-import dissectml as iml
+import dissectml as dml
 
 # Load a built-in dataset
-df = iml.load_titanic()
+df = dml.load_titanic()
 ```
 
 ### 1. Deep Exploratory Data Analysis
 
 ```python
-eda = iml.explore(df)
+eda = dml.explore(df)
 
 eda.overview.show()           # Shape, dtypes, memory usage
 eda.correlations.heatmap()    # Unified correlation matrix
@@ -127,7 +127,7 @@ eda.clusters.summary()        # Auto-discovered clusters
 ### 2. Model Battle Arena
 
 ```python
-models = iml.battle(df, target="survived")
+models = dml.battle(df, target="survived")
 
 models.leaderboard()          # Ranked models with CV scores
 models.timing()               # Training time comparison
@@ -136,7 +136,7 @@ models.timing()               # Training time comparison
 ### 3. Full Pipeline (EDA + Intelligence + Battle + Compare + Report)
 
 ```python
-report = iml.analyze(df, target="survived", task="classification")
+report = dml.analyze(df, target="survived", task="classification")
 
 report.summary()              # High-level findings
 report.export("report.html")  # Self-contained interactive report
@@ -229,14 +229,14 @@ Stage 5: Report         dissectml.report        Jinja2 HTML builder, narrative g
 DissectML uses a global configuration object for controlling default behavior:
 
 ```python
-import dissectml as iml
+import dissectml as dml
 
 # View current config
-print(iml.get_config())
+print(dml.get_config())
 
 # Temporarily override settings
-with iml.config_context(n_jobs=4, cv_folds=10):
-    report = iml.analyze(df, target="price")
+with dml.config_context(n_jobs=4, cv_folds=10):
+    report = dml.analyze(df, target="price")
 ```
 
 ---
@@ -246,8 +246,8 @@ with iml.config_context(n_jobs=4, cv_folds=10):
 Two datasets are bundled for quick experimentation:
 
 ```python
-df_titanic = iml.load_titanic()    # Binary classification (survival)
-df_housing = iml.load_housing()    # Regression (house prices)
+df_titanic = dml.load_titanic()    # Binary classification (survival)
+df_housing = dml.load_housing()    # Regression (house prices)
 ```
 
 ---

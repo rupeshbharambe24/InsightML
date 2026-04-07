@@ -1,4 +1,4 @@
-"""Tests for report/html_renderer.py, report/builder.py, and iml.analyze()."""
+"""Tests for report/html_renderer.py, report/builder.py, and dml.analyze()."""
 
 import tempfile
 from pathlib import Path
@@ -161,13 +161,13 @@ class TestAnalysisReport:
 
 
 # ---------------------------------------------------------------------------
-# Integration: iml.analyze() end-to-end
+# Integration: dml.analyze() end-to-end
 # ---------------------------------------------------------------------------
 
 class TestAnalyzeIntegration:
     def test_analyze_returns_report(self, clf_df):
-        import dissectml as iml
-        report = iml.analyze(
+        import dissectml as dml
+        report = dml.analyze(
             clf_df, target="target",
             task="classification",
             battle_families=["linear"],
@@ -178,17 +178,17 @@ class TestAnalyzeIntegration:
         assert report.task == "classification"
 
     def test_analyze_has_eda(self, clf_df):
-        import dissectml as iml
-        report = iml.analyze(
+        import dissectml as dml
+        report = dml.analyze(
             clf_df, target="target",
             battle_families=["linear"], cv=3, n_jobs=1,
         )
         assert report.eda is not None
 
     def test_analyze_has_models(self, clf_df):
-        import dissectml as iml
+        import dissectml as dml
         from dissectml.battle.result import BattleResult
-        report = iml.analyze(
+        report = dml.analyze(
             clf_df, target="target",
             battle_families=["linear"], cv=3, n_jobs=1,
         )
@@ -196,17 +196,17 @@ class TestAnalyzeIntegration:
         assert report.models.best is not None
 
     def test_analyze_has_compare(self, clf_df):
-        import dissectml as iml
+        import dissectml as dml
         from dissectml.compare.comparator import ModelComparator
-        report = iml.analyze(
+        report = dml.analyze(
             clf_df, target="target",
             battle_families=["linear"], cv=3, n_jobs=1,
         )
         assert isinstance(report.compare, ModelComparator)
 
     def test_analyze_export_works(self, clf_df):
-        import dissectml as iml
-        report = iml.analyze(
+        import dissectml as dml
+        report = dml.analyze(
             clf_df, target="target",
             battle_families=["linear"], cv=3, n_jobs=1,
         )
@@ -218,13 +218,13 @@ class TestAnalyzeIntegration:
             assert "<!DOCTYPE html>" in content
 
     def test_analyze_no_battle(self, clf_df):
-        import dissectml as iml
-        report = iml.analyze(clf_df, target="target", run_battle=False)
+        import dissectml as dml
+        report = dml.analyze(clf_df, target="target", run_battle=False)
         assert report.models is None
         assert report.eda is not None
         assert report.intelligence is not None
 
     def test_analyze_wrong_target_raises(self, clf_df):
-        import dissectml as iml
+        import dissectml as dml
         with pytest.raises(KeyError):
-            iml.analyze(clf_df, target="nonexistent")
+            dml.analyze(clf_df, target="nonexistent")

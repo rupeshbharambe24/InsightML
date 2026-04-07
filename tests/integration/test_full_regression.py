@@ -1,7 +1,7 @@
 """Integration tests: full pipeline on a California Housing regression dataset.
 
 Exercises the end-to-end flow:
-    iml.explore() → iml.analyze(run_battle=False) → iml.analyze(task="regression", ...)
+    dml.explore() → dml.analyze(run_battle=False) → dml.analyze(task="regression", ...)
 
 All tests are marked as slow integration tests and share module-scoped fixtures
 to avoid re-running the pipeline for every test function.  The housing DataFrame
@@ -14,7 +14,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import pytest
 
-import dissectml as iml
+import dissectml as dml
 from dissectml.eda.result import EDAResult
 from dissectml.report.builder import AnalysisReport
 
@@ -36,26 +36,26 @@ _TARGET = "MedHouseVal"
 @pytest.fixture(scope="module")
 def housing_df() -> pd.DataFrame:
     """Load California Housing dataset and down-sample to 200 rows for CI speed."""
-    full_df = iml.load_housing()
+    full_df = dml.load_housing()
     return full_df.sample(n=200, random_state=42).reset_index(drop=True)
 
 
 @pytest.fixture(scope="module")
 def eda_result(housing_df: pd.DataFrame) -> EDAResult:
-    """EDAResult from iml.explore() on the housing sample."""
-    return iml.explore(housing_df, target=_TARGET)
+    """EDAResult from dml.explore() on the housing sample."""
+    return dml.explore(housing_df, target=_TARGET)
 
 
 @pytest.fixture(scope="module")
 def report_no_battle(housing_df: pd.DataFrame) -> AnalysisReport:
     """AnalysisReport with EDA + Intelligence only (run_battle=False)."""
-    return iml.analyze(housing_df, target=_TARGET, run_battle=False)
+    return dml.analyze(housing_df, target=_TARGET, run_battle=False)
 
 
 @pytest.fixture(scope="module")
 def report_with_battle(housing_df: pd.DataFrame) -> AnalysisReport:
     """AnalysisReport with the linear model family battle."""
-    return iml.analyze(
+    return dml.analyze(
         housing_df,
         target=_TARGET,
         task="regression",
@@ -71,7 +71,7 @@ def report_with_battle(housing_df: pd.DataFrame) -> AnalysisReport:
 
 
 def test_explore_housing_returns_eda(eda_result: EDAResult) -> None:
-    """iml.explore() on a housing DataFrame must return an EDAResult instance."""
+    """dml.explore() on a housing DataFrame must return an EDAResult instance."""
     assert isinstance(eda_result, EDAResult)
 
 

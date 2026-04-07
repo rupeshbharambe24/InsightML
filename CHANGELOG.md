@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2026-04-06
 
 ### Added
-- `iml.explore(df)` — Deep EDA with lazy evaluation
+- `dml.explore(df)` — Deep EDA with lazy evaluation
 - Dataset overview: type detection, column profiles, memory stats
 - Univariate analysis: distributions, KDE, descriptive stats
 - Bivariate analysis: cross-type pair analysis
@@ -19,21 +19,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Cluster discovery: auto K-Means + DBSCAN with profiling
 - Feature interactions: interaction strength, non-linearity detection
 - Target analysis: class balance, distribution, feature-target relationships
-- `iml.battle(df, target)` — parallel CV across 19 classifiers / 17 regressors
+- `dml.battle(df, target)` — parallel CV across 19 classifiers / 17 regressors
 - EDA-informed preprocessing (KNN imputer, Robust scaler, OrdinalEncoder)
 - ModelRegistry, MODEL_CATALOG, ModelTuner (quick/tuned/custom modes)
-- `iml.analyze_intelligence(df, target)` — 4-pronged leakage detection, VIF, condition number
+- `dml.analyze_intelligence(df, target)` — 4-pronged leakage detection, VIF, condition number
 - Data readiness score 0–100 with grade (A–F) and penalty waterfall
 - Composite feature importance ranking (MI + correlation + F-score)
 - Algorithm recommendations engine (7 algorithm profiles)
 - `ModelComparator` — McNemar test, corrected paired t-test, Pareto front, error analysis
 - ROC/PR curves, confusion matrices, residual plots, actual vs predicted
 - SHAP model comparison (TreeExplainer / LinearExplainer / KernelExplainer)
-- `iml.analyze(df, target)` — full 5-stage pipeline, returns `AnalysisReport`
+- `dml.analyze(df, target)` — full 5-stage pipeline, returns `AnalysisReport`
 - `AnalysisReport.export(path)` — self-contained interactive HTML report
 - `AnalysisReport.show()` — export + open in browser
-- `iml.load_titanic()` / `iml.load_housing()` — built-in demo datasets
-- `iml.to_pandas()` — Polars DataFrame / file path / dict / numpy array conversion
+- `dml.load_titanic()` / `dml.load_housing()` — built-in demo datasets
+- `dml.to_pandas()` — Polars DataFrame / file path / dict / numpy array conversion
 - `report/pdf_renderer.py` — optional PDF export via WeasyPrint
 - Report sections module (`report/sections/`), Jinja2 templates, CSS/JS assets
 - GitHub Actions CI/CD (`.github/workflows/ci.yml`, `release.yml`)

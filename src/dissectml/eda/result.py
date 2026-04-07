@@ -22,7 +22,7 @@ class EDAResult(StageResult):
 
     Usage::
 
-        eda = iml.explore(df, target="survived")
+        eda = dml.explore(df, target="survived")
         eda.overview.show()          # Type detection, column profiles
         eda.correlations.heatmap()   # Unified correlation matrix
         eda.missing.patterns()       # MCAR/MAR/MNAR analysis
@@ -211,7 +211,7 @@ def explore(
 
     Example::
 
-        eda = iml.explore(df, target="survived")
+        eda = dml.explore(df, target="survived")
         eda.overview.show()
         eda.correlations.heatmap()
         eda.missing.patterns()

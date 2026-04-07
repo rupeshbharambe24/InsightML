@@ -14,8 +14,8 @@ from dissectml.core.data_container import DataContainer
 class InsightPipeline:
     """Runs all pipeline stages in sequence, passing context between them.
 
-    Used internally by ``iml.analyze()``. Individual stages can also be
-    accessed directly via ``iml.explore()`` or ``iml.battle()``.
+    Used internally by ``dml.analyze()``. Individual stages can also be
+    accessed directly via ``dml.explore()`` or ``dml.battle()``.
 
     Stages (v0.4 full pipeline):
         1. EDA         — Deep exploratory data analysis
@@ -54,6 +54,6 @@ class InsightPipeline:
 
         # Stages 2-5: to be implemented in v0.2-v0.4
         raise NotImplementedError(
-            "Full pipeline (iml.analyze) is available in v0.4+. "
-            "Use iml.explore(df) for EDA."
+            "Full pipeline (dml.analyze) is available in v0.4+. "
+            "Use dml.explore(df) for EDA."
         )

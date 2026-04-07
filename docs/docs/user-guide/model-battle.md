@@ -1,12 +1,12 @@
 # Model Battle
 
-`iml.battle(df, target)` runs parallel cross-validation across a configurable model
+`dml.battle(df, target)` runs parallel cross-validation across a configurable model
 catalogue and returns a `BattleResult` with sorted leaderboard and OOF predictions.
 
 ## Basic Usage
 
 ```python
-models = iml.battle(df, target="survived")
+models = dml.battle(df, target="survived")
 models.leaderboard()          # Sorted by primary metric
 models.best                   # Best ModelScore
 models.get("RandomForest")    # Specific model score
@@ -16,13 +16,13 @@ models.get("RandomForest")    # Specific model score
 
 ```python
 # By family
-models = iml.battle(df, target="survived", families=["tree", "linear"])
+models = dml.battle(df, target="survived", families=["tree", "linear"])
 
 # By name
-models = iml.battle(df, target="survived", models=["RandomForest", "LogisticRegression"])
+models = dml.battle(df, target="survived", models=["RandomForest", "LogisticRegression"])
 
 # Excluding models
-models = iml.battle(df, target="survived", exclude=["SVC", "KNN"])
+models = dml.battle(df, target="survived", exclude=["SVC", "KNN"])
 ```
 
 ## Task Inference
@@ -37,7 +37,7 @@ Override with `task="regression"`.
 
 ## Preprocessing
 
-Preprocessing is informed by EDA results when `iml.analyze()` is used. In standalone
+Preprocessing is informed by EDA results when `dml.analyze()` is used. In standalone
 `battle()` calls, heuristics are applied:
 
 - **> 20% missing values** → KNN imputer (instead of mean/most-frequent)
@@ -70,13 +70,13 @@ registry.register(ModelEntry(
     params={"alpha": 0.1},
 ))
 
-models = iml.battle(df, target="survived", registry=registry)
+models = dml.battle(df, target="survived", registry=registry)
 ```
 
 ## Hyperparameter Tuning
 
 ```python
-models = iml.battle(df, target="survived", tune=True, top_n=3, n_iter=20)
+models = dml.battle(df, target="survived", tune=True, top_n=3, n_iter=20)
 ```
 
 Runs `RandomizedSearchCV` on the top-N models using default search spaces from

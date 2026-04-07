@@ -1,6 +1,6 @@
 # Intelligence Bridge
 
-`iml.analyze_intelligence(df, target)` connects EDA findings to modelling decisions.
+`dml.analyze_intelligence(df, target)` connects EDA findings to modelling decisions.
 All sub-modules are lazy — no computation until accessed.
 
 ## Leakage Detection
@@ -15,7 +15,7 @@ DissectML uses a four-pronged scan:
 | Derived feature | OLS R² > 0.98 | Near-perfect linear reconstruction |
 
 ```python
-intel = iml.analyze_intelligence(df, target="price", datetime_col="sale_date")
+intel = dml.analyze_intelligence(df, target="price", datetime_col="sale_date")
 
 for w in intel.leakage:
     print(f"{w.column}: {w.method} (score={w.score:.3f}, severity={w.severity})")

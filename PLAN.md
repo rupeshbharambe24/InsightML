@@ -11,11 +11,11 @@
 | Decision | Choice | Rationale |
 |---|---|---|
 | Package name (PyPI) | `dissectml` | Clean, readable, matches "DissectML" |
-| Import name | `dissectml` | `import dissectml as iml` |
+| Import name | `dissectml` | `import dissectml as dml` |
 | Python environment | Dedicated `.venv` in project | Shared D:\commonenv has NumPy/SciPy conflict |
 | Python version | `>=3.10` | Needed for `match`, `X \| Y` union types |
 | Build system | hatchling (src-layout) | Modern, clean, no setup.py needed |
-| v0.1 scope | EDA-only (`iml.explore()`) | Ship fast, validate EDA engine first |
+| v0.1 scope | EDA-only (`dml.explore()`) | Ship fast, validate EDA engine first |
 | Deep Learning | sklearn MLP only | MLPClassifier/MLPRegressor, no PyTorch/TF |
 | Core deps | Keep pydantic, statsmodels, rich | All useful, common in DS environments |
 | File formats | CSV, Excel, Parquet, JSON | All four via pandas readers |
@@ -212,18 +212,18 @@ D:\Projects\dissectML\
 ### 3.1 Dream API
 
 ```python
-import dissectml as iml
+import dissectml as dml
 
 # === Full pipeline (3 lines) ===
-report = iml.analyze(data="dataset.csv", target="price", task="regression")
+report = dml.analyze(data="dataset.csv", target="price", task="regression")
 report.eda.show()             # Interactive EDA dashboard
 report.models.compare()       # Side-by-side model comparison
 report.insights.summary()     # Natural language key findings
 report.export("report.html")  # Full interactive report
 
 # === Individual stages ===
-eda = iml.explore(df)                     # Deep EDA only
-models = iml.battle(df, target="price")   # Model comparison only
+eda = dml.explore(df)                     # Deep EDA only
+models = dml.battle(df, target="price")   # Model comparison only
 
 # === Granular access ===
 eda.outliers.plot()             # Outlier analysis with IQR + Z-score + IF
@@ -486,20 +486,20 @@ class DissectMLConfig:
 **Three override levels** (resolution: per-call > context > global > defaults):
 ```python
 # Global
-iml.set_config(cv_folds=10)
-cfg = iml.get_config()
+dml.set_config(cv_folds=10)
+cfg = dml.get_config()
 
 # Temporary
-with iml.config_context(cv_folds=3):
-    result = iml.battle(df, target="y")
+with dml.config_context(cv_folds=3):
+    result = dml.battle(df, target="y")
 
 # Per-call
-result = iml.battle(df, target="y", cv_folds=10)
+result = dml.battle(df, target="y", cv_folds=10)
 ```
 
 ---
 
-## 8. Stage 1: Deep EDA (`iml.explore(df)`)
+## 8. Stage 1: Deep EDA (`dml.explore(df)`)
 
 ### 8.0 EDAResult Orchestrator (`eda/result.py`)
 
@@ -849,7 +849,7 @@ Final scores clamped [0, 100], sorted descending.
 
 ---
 
-## 10. Stage 3: Multi-Model Training (`iml.battle(df, target)`)
+## 10. Stage 3: Multi-Model Training (`dml.battle(df, target)`)
 
 ### 10.1 Model Registry (`registry.py` + `catalog.py`)
 
@@ -895,7 +895,7 @@ class ModelEntry:
     tags: set[str]                 # {"fast", "interpretable", "handles_missing"}
 ```
 
-**Registry** is extensible: `iml.registry.register(ModelEntry(...))` for custom models.
+**Registry** is extensible: `dml.registry.register(ModelEntry(...))` for custom models.
 
 ### 10.2 EDA-Informed Preprocessing (`preprocessing.py`)
 
@@ -1303,7 +1303,7 @@ class SmartSampler:
 
 ### Phase 1: Deep EDA — v0.1 (~3-4 sessions)
 
-**Goal**: `iml.explore(df)` returns full EDA with interactive output.
+**Goal**: `dml.explore(df)` returns full EDA with interactive output.
 
 - [ ] `eda/result.py` — EDAResult lazy orchestrator
 - [ ] `eda/overview.py` — type detection + dataset stats
@@ -1316,13 +1316,13 @@ class SmartSampler:
 - [ ] `eda/clusters.py` — auto K-Means/DBSCAN + profiles + PCA/t-SNE
 - [ ] `eda/interactions.py` — interaction strength + non-linearity
 - [ ] `eda/target_analysis.py` — class balance / regression distribution / feature-target
-- [ ] Wire up `iml.explore(df)` in `__init__.py`
+- [ ] Wire up `dml.explore(df)` in `__init__.py`
 - [ ] Tests for all EDA modules
 - [ ] Manual test: run in notebook, verify `_repr_html_()` renders
 
 ### Phase 2: Model Battle — v0.2 (~3-4 sessions)
 
-**Goal**: `iml.battle(df, target)` trains and compares 15+ models.
+**Goal**: `dml.battle(df, target)` trains and compares 15+ models.
 
 - [ ] `battle/catalog.py` — MODEL_CATALOG with all model entries
 - [ ] `battle/registry.py` — ModelRegistry with register/unregister/filter
@@ -1330,7 +1330,7 @@ class SmartSampler:
 - [ ] `battle/runner.py` — BattleRunner with parallel CV + timing + OOF collection
 - [ ] `battle/result.py` — BattleResult + ModelScore
 - [ ] `battle/tuner.py` + `battle/param_grids.py` — hyperparameter tuning
-- [ ] Wire up `iml.battle(df, target)` in `__init__.py`
+- [ ] Wire up `dml.battle(df, target)` in `__init__.py`
 - [ ] Tests for registry, runner, preprocessing
 
 ### Phase 3: Intelligence Bridge — v0.3 (~2 sessions)
@@ -1347,7 +1347,7 @@ class SmartSampler:
 
 ### Phase 4: Compare + Report — v0.4 (~3-4 sessions)
 
-**Goal**: Full `iml.analyze()` pipeline with HTML report export.
+**Goal**: Full `dml.analyze()` pipeline with HTML report export.
 
 - [ ] `compare/comparator.py` — ModelComparator facade
 - [ ] `compare/metrics_table.py` — styled comparison table
@@ -1360,7 +1360,7 @@ class SmartSampler:
 - [ ] `report/narrative.py` — template-driven summaries
 - [ ] `report/html_renderer.py` — Jinja2 -> self-contained HTML
 - [ ] `report/templates/` — all Jinja2 templates + CSS + JS
-- [ ] Wire up `iml.analyze(df, target)` in `__init__.py`
+- [ ] Wire up `dml.analyze(df, target)` in `__init__.py`
 - [ ] `report.export("report.html")` working end-to-end
 - [ ] Integration tests
 
@@ -1413,12 +1413,12 @@ def edge_case_df():
 ### Verification Checklist
 
 - [ ] `pip install -e .` works in clean `.venv`
-- [ ] `import dissectml as iml` works
-- [ ] `iml.explore(df)` returns `EDAResult` with all sub-modules accessible
-- [ ] `iml.explore(df).show()` renders in Jupyter
-- [ ] `iml.explore(df).correlations.heatmap()` returns interactive Plotly figure
-- [ ] `iml.battle(df, target="y")` trains 15+ models, returns sorted leaderboard
-- [ ] `iml.analyze(df, target="y").export("report.html")` produces valid HTML
+- [ ] `import dissectml as dml` works
+- [ ] `dml.explore(df)` returns `EDAResult` with all sub-modules accessible
+- [ ] `dml.explore(df).show()` renders in Jupyter
+- [ ] `dml.explore(df).correlations.heatmap()` returns interactive Plotly figure
+- [ ] `dml.battle(df, target="y")` trains 15+ models, returns sorted leaderboard
+- [ ] `dml.analyze(df, target="y").export("report.html")` produces valid HTML
 - [ ] Edge cases: all-null columns don't crash, constant features are handled
 - [ ] Large dataset (100K+ rows): auto-sampling kicks in, reasonable runtime
 - [ ] Optional deps missing: graceful skip with clear error message

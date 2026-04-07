@@ -12,7 +12,7 @@ from typing import Any
 class AnalysisReport:
     """Unified report combining EDA, Intelligence, Battle, and Compare stages.
 
-    Produced by ``iml.analyze()``.
+    Produced by ``dml.analyze()``.
 
     Attributes:
         task: "classification" or "regression".

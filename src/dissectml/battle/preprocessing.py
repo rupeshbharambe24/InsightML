@@ -78,7 +78,7 @@ def build_preprocessing_plan(
     Args:
         df: Input DataFrame (features only, target already separated if needed).
         target: Target column name to exclude from feature columns.
-        eda_result: Optional ``EDAResult`` from ``iml.explore()``.
+        eda_result: Optional ``EDAResult`` from ``dml.explore()``.
         high_cardinality_threshold: nunique >= this -> OrdinalEncoder.
 
     Returns:

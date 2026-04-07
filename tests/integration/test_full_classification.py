@@ -1,7 +1,7 @@
 """Integration tests: full pipeline on a Titanic-like classification dataset.
 
 Exercises the end-to-end flow:
-    iml.explore() → iml.analyze(run_battle=False) → iml.analyze(battle_families=["linear"])
+    dml.explore() → dml.analyze(run_battle=False) → dml.analyze(battle_families=["linear"])
 
 All tests are marked as slow integration tests and share a single module-scoped
 fixture to avoid re-running the pipeline for every test function.
@@ -12,7 +12,7 @@ from __future__ import annotations
 import pandas as pd
 import pytest
 
-import dissectml as iml
+import dissectml as dml
 from dissectml.eda.result import EDAResult
 from dissectml.report.builder import AnalysisReport
 
@@ -31,25 +31,25 @@ pytestmark = [pytest.mark.integration, pytest.mark.slow]
 @pytest.fixture(scope="module")
 def titanic_df() -> pd.DataFrame:
     """Load Titanic dataset (seaborn or synthetic fallback)."""
-    return iml.load_titanic()
+    return dml.load_titanic()
 
 
 @pytest.fixture(scope="module")
 def eda_result(titanic_df: pd.DataFrame) -> EDAResult:
-    """EDAResult from iml.explore()."""
-    return iml.explore(titanic_df, target="survived")
+    """EDAResult from dml.explore()."""
+    return dml.explore(titanic_df, target="survived")
 
 
 @pytest.fixture(scope="module")
 def report_no_battle(titanic_df: pd.DataFrame) -> AnalysisReport:
     """AnalysisReport with EDA + Intelligence only (run_battle=False)."""
-    return iml.analyze(titanic_df, target="survived", run_battle=False)
+    return dml.analyze(titanic_df, target="survived", run_battle=False)
 
 
 @pytest.fixture(scope="module")
 def report_with_battle(titanic_df: pd.DataFrame) -> AnalysisReport:
     """AnalysisReport with the linear model family battle."""
-    return iml.analyze(
+    return dml.analyze(
         titanic_df,
         target="survived",
         battle_families=["linear"],
@@ -64,7 +64,7 @@ def report_with_battle(titanic_df: pd.DataFrame) -> AnalysisReport:
 
 
 def test_explore_returns_eda_result(eda_result: EDAResult) -> None:
-    """iml.explore() must return an EDAResult instance."""
+    """dml.explore() must return an EDAResult instance."""
     assert isinstance(eda_result, EDAResult)
 
 

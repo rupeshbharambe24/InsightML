@@ -2,10 +2,10 @@
 
 Quick start::
 
-    import dissectml as iml
+    import dissectml as dml
 
-    df = iml.load_titanic()   # 891 rows, classification target: 'survived'
-    df = iml.load_housing()   # ~20k rows, regression target: 'MedHouseVal'
+    df = dml.load_titanic()   # 891 rows, classification target: 'survived'
+    df = dml.load_housing()   # ~20k rows, regression target: 'MedHouseVal'
 """
 
 from __future__ import annotations

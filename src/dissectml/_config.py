@@ -80,7 +80,7 @@ def set_config(**kwargs: Any) -> None:
 
     Example::
 
-        iml.set_config(cv_folds=10, verbosity=0)
+        dml.set_config(cv_folds=10, verbosity=0)
     """
     global _global_config
     for key, value in kwargs.items():
@@ -95,8 +95,8 @@ def config_context(**kwargs: Any) -> Generator[DissectMLConfig, None, None]:
 
     Example::
 
-        with iml.config_context(cv_folds=3):
-            result = iml.battle(df, target="y")
+        with dml.config_context(cv_folds=3):
+            result = dml.battle(df, target="y")
     """
     old_config = getattr(_thread_local, "config", None)
     base = old_config if old_config is not None else _global_config

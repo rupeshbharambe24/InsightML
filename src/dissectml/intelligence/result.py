@@ -27,7 +27,7 @@ class IntelligenceResult:
 
     Access::
 
-        intel = iml.analyze_intelligence(df, target="price")
+        intel = dml.analyze_intelligence(df, target="price")
         intel.leakage              # list of LeakageWarning
         intel.vif                  # pd.DataFrame
         intel.feature_importance   # pd.DataFrame

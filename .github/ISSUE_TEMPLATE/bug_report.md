@@ -18,7 +18,7 @@ Steps to reproduce the behavior:
 2. Run this code:
 
 ```python
-import dissectml as iml
+import dissectml as dml
 # minimal reproduction code here
 ```
 

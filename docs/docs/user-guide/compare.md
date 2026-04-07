@@ -6,9 +6,9 @@ All properties are lazy `@cached_property` — computed on first access.
 ## Basic Usage
 
 ```python
-import dissectml as iml
+import dissectml as dml
 
-comp = iml.ModelComparator(battle_result, y=df["target"])
+comp = dml.ModelComparator(battle_result, y=df["target"])
 
 comp.table            # ComparisonTable (styled DataFrame)
 comp.pareto           # Plotly scatter: accuracy vs speed Pareto front

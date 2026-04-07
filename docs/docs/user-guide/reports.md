@@ -6,7 +6,7 @@ embedded CSS, Plotly charts (via CDN), collapsible sections, and a sticky sideba
 ## Generating a Report
 
 ```python
-report = iml.analyze(df, target="survived")
+report = dml.analyze(df, target="survived")
 
 # Export to file
 report.export("report.html")   # Returns absolute path
@@ -55,7 +55,7 @@ export_pdf(report, "report.pdf")
 ## Customisation
 
 ```python
-iml.set_config(plotly_template="plotly_dark")
+dml.set_config(plotly_template="plotly_dark")
 ```
 
 Available Plotly templates: `plotly`, `plotly_white`, `plotly_dark`,

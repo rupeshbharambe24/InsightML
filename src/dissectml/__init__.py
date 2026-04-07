@@ -6,18 +6,18 @@ in as few as 3 function calls.
 
 Quick start::
 
-    import dissectml as iml
+    import dissectml as dml
 
     # Deep EDA (v0.1+)
-    eda = iml.explore(df)
+    eda = dml.explore(df)
     eda.overview.show()
     eda.correlations.heatmap()
 
     # Model battle (v0.2+)
-    models = iml.battle(df, target="price")
+    models = dml.battle(df, target="price")
 
     # Full pipeline (v0.4+)
-    report = iml.analyze(df, target="price")
+    report = dml.analyze(df, target="price")
     report.export("report.html")
 """
 
@@ -93,8 +93,8 @@ def analyze(
 
     Example::
 
-        import dissectml as iml
-        report = iml.analyze(df, target="survived")
+        import dissectml as dml
+        report = dml.analyze(df, target="survived")
         report.summary()
         report.export("report.html")
     """

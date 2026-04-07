@@ -208,6 +208,6 @@ def recommend_algorithms(
     if minority_ratio < 0.3:
         reasoning.append(f"Severe class imbalance (ratio={minority_ratio:.2f}) → use class_weight.")
     if not reasoning:
-        reasoning.append("No strong signals — all families are competitive; run iml.battle() to compare empirically.")
+        reasoning.append("No strong signals — all families are competitive; run dml.battle() to compare empirically.")
 
     return RecommendationResult(ranked=ranked, reasoning=reasoning)

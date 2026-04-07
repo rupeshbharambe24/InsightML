@@ -14,19 +14,19 @@
 ### Added
 - `compare/` — `ModelComparator`, McNemar test, corrected paired t-test, Pareto front, error analysis
 - `report/` — `AnalysisReport`, `AnalysisReport.export()`, self-contained HTML renderer
-- `iml.analyze()` — full 5-stage pipeline entry point
+- `dml.analyze()` — full 5-stage pipeline entry point
 
 ## v0.3.0
 
 ### Added
 - `intelligence/` — leakage detection, VIF, feature importance, readiness score, algorithm recommendations
-- `iml.analyze_intelligence()` entry point
+- `dml.analyze_intelligence()` entry point
 
 ## v0.2.0
 
 ### Added
 - `battle/` — `ModelRegistry`, `BattleRunner`, `ModelTuner`, EDA-informed preprocessing
-- `iml.battle()` entry point
+- `dml.battle()` entry point
 - 19 classifiers + 17 regressors in default catalogue
 
 ## v0.1.0
@@ -34,5 +34,5 @@
 ### Added
 - `eda/` — `EDAResult` with lazy sub-modules: overview, correlations, missing, outliers,
   statistical tests, clusters, interactions, target analysis
-- `iml.explore()` entry point
+- `dml.explore()` entry point
 - `DissectMLConfig`, `config_context()`, `set_config()`

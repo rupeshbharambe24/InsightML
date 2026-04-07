@@ -157,19 +157,19 @@ class TestLoadHousing:
 
 class TestDatasetsToplevel:
     def test_load_titanic_accessible_from_iml(self):
-        import dissectml as iml
+        import dissectml as dml
 
-        df = iml.load_titanic()
+        df = dml.load_titanic()
         assert isinstance(df, pd.DataFrame)
 
     def test_load_housing_accessible_from_iml(self):
-        import dissectml as iml
+        import dissectml as dml
 
-        df = iml.load_housing()
+        df = dml.load_housing()
         assert isinstance(df, pd.DataFrame)
 
     def test_to_pandas_accessible_from_iml(self):
-        import dissectml as iml
+        import dissectml as dml
 
-        df = iml.to_pandas({"a": [1]})
+        df = dml.to_pandas({"a": [1]})
         assert isinstance(df, pd.DataFrame)

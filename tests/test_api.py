@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-import dissectml as iml
+import dissectml as dml
 
 # ---------------------------------------------------------------------------
 # Shared fixture
@@ -35,13 +35,13 @@ def small_df():
 class TestModuleAttributes:
     def test_import_succeeds(self):
         # If we reach this point dissectml imported cleanly above.
-        assert iml is not None
+        assert dml is not None
 
     def test_version_is_string(self):
-        assert isinstance(iml.__version__, str)
+        assert isinstance(dml.__version__, str)
 
     def test_version_not_empty(self):
-        assert len(iml.__version__) > 0
+        assert len(dml.__version__) > 0
 
 
 # ---------------------------------------------------------------------------
@@ -50,34 +50,34 @@ class TestModuleAttributes:
 
 class TestCallables:
     def test_explore_is_callable(self):
-        assert callable(iml.explore)
+        assert callable(dml.explore)
 
     def test_battle_is_callable(self):
-        assert callable(iml.battle)
+        assert callable(dml.battle)
 
     def test_analyze_is_callable(self):
-        assert callable(iml.analyze)
+        assert callable(dml.analyze)
 
     def test_analyze_intelligence_is_callable(self):
-        assert callable(iml.analyze_intelligence)
+        assert callable(dml.analyze_intelligence)
 
     def test_load_titanic_is_callable(self):
-        assert callable(iml.load_titanic)
+        assert callable(dml.load_titanic)
 
     def test_load_housing_is_callable(self):
-        assert callable(iml.load_housing)
+        assert callable(dml.load_housing)
 
     def test_to_pandas_is_callable(self):
-        assert callable(iml.to_pandas)
+        assert callable(dml.to_pandas)
 
     def test_get_config_is_callable(self):
-        assert callable(iml.get_config)
+        assert callable(dml.get_config)
 
     def test_set_config_is_callable(self):
-        assert callable(iml.set_config)
+        assert callable(dml.set_config)
 
     def test_config_context_is_callable(self):
-        assert callable(iml.config_context)
+        assert callable(dml.config_context)
 
 
 # ---------------------------------------------------------------------------
@@ -86,17 +86,17 @@ class TestCallables:
 
 class TestClasses:
     def test_model_comparator_is_class(self):
-        assert inspect.isclass(iml.ModelComparator)
+        assert inspect.isclass(dml.ModelComparator)
 
     def test_analysis_report_is_class(self):
-        assert inspect.isclass(iml.AnalysisReport)
+        assert inspect.isclass(dml.AnalysisReport)
 
     def test_insight_ml_config_is_class(self):
-        assert inspect.isclass(iml.DissectMLConfig)
+        assert inspect.isclass(dml.DissectMLConfig)
 
     def test_insight_ml_error_is_exception_class(self):
-        assert inspect.isclass(iml.DissectMLError)
-        assert issubclass(iml.DissectMLError, Exception)
+        assert inspect.isclass(dml.DissectMLError)
+        assert issubclass(dml.DissectMLError, Exception)
 
 
 # ---------------------------------------------------------------------------
@@ -105,15 +105,15 @@ class TestClasses:
 
 class TestDatasetLoaders:
     def test_load_titanic_returns_dataframe(self):
-        df = iml.load_titanic()
+        df = dml.load_titanic()
         assert isinstance(df, pd.DataFrame)
 
     def test_load_housing_returns_dataframe(self):
-        df = iml.load_housing()
+        df = dml.load_housing()
         assert isinstance(df, pd.DataFrame)
 
     def test_to_pandas_from_dict_returns_dataframe(self):
-        result = iml.to_pandas({"a": [1, 2, 3]})
+        result = dml.to_pandas({"a": [1, 2, 3]})
         assert isinstance(result, pd.DataFrame)
 
 
@@ -124,33 +124,33 @@ class TestDatasetLoaders:
 class TestAnalyze:
     def test_analyze_raises_key_error_for_missing_target(self, small_df):
         with pytest.raises(KeyError):
-            iml.analyze(small_df, target="nonexistent")
+            dml.analyze(small_df, target="nonexistent")
 
     def test_analyze_no_battle_returns_analysis_report(self, small_df):
-        report = iml.analyze(small_df, target="survived", run_battle=False)
-        assert isinstance(report, iml.AnalysisReport)
+        report = dml.analyze(small_df, target="survived", run_battle=False)
+        assert isinstance(report, dml.AnalysisReport)
 
     def test_analyze_no_battle_report_has_correct_task_inferred(self, small_df):
-        report = iml.analyze(small_df, target="survived", run_battle=False)
+        report = dml.analyze(small_df, target="survived", run_battle=False)
         # survived is binary 0/1 — should be inferred as classification
         assert report.task == "classification"
 
     def test_analyze_no_battle_report_stores_target(self, small_df):
-        report = iml.analyze(small_df, target="survived", run_battle=False)
+        report = dml.analyze(small_df, target="survived", run_battle=False)
         assert report.target == "survived"
 
     def test_analyze_no_battle_report_has_eda(self, small_df):
-        report = iml.analyze(small_df, target="survived", run_battle=False)
+        report = dml.analyze(small_df, target="survived", run_battle=False)
         assert report.eda is not None
 
     def test_analyze_no_battle_report_has_intelligence(self, small_df):
-        report = iml.analyze(small_df, target="survived", run_battle=False)
+        report = dml.analyze(small_df, target="survived", run_battle=False)
         assert report.intelligence is not None
 
     def test_analyze_no_battle_models_is_none(self, small_df):
-        report = iml.analyze(small_df, target="survived", run_battle=False)
+        report = dml.analyze(small_df, target="survived", run_battle=False)
         assert report.models is None
 
     def test_analyze_no_battle_compare_is_none(self, small_df):
-        report = iml.analyze(small_df, target="survived", run_battle=False)
+        report = dml.analyze(small_df, target="survived", run_battle=False)
         assert report.compare is None

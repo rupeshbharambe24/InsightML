@@ -1,6 +1,6 @@
 # Deep EDA
 
-`iml.explore(df)` returns an `EDAResult` object with lazy `@cached_property` sub-modules.
+`dml.explore(df)` returns an `EDAResult` object with lazy `@cached_property` sub-modules.
 Computation only triggers when you access a sub-module — `explore()` returns instantly.
 
 ## Sub-modules
