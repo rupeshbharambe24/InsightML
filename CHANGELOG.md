@@ -5,6 +5,28 @@ All notable changes to DissectML will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2026-04-07
+
+### Changed
+- Renamed package from `insightml` to `dissectml` on PyPI
+- Renamed project from InsightML to DissectML across all references
+- Changed import alias from `iml` to `dml`
+- Housing dataset now fetched from sklearn on first use and cached locally (removed 1.9MB bundled CSV from wheel)
+- Added report screenshot to README
+- Added Colab demo notebook with "Open in Colab" badge
+
+### Added
+- 74 new tests: report sections, `_lazy`, pipeline, progress, `_io`, `_sampling` (599 total)
+- API reference docs (6 mkdocstrings pages)
+- Community files: CONTRIBUTING.md, CODE_OF_CONDUCT.md, issue/PR templates
+- `catboost_info/` added to .gitignore, junk files excluded from sdist
+
+### Fixed
+- Removed `numpy<2.0` upper bound constraint
+- Fixed repo URLs in mkdocs.yml and pyproject.toml
+- Fixed PowerShell parse error in CI (added `shell: bash`)
+- Fixed `render_html_report()` unsupported `inline_plotly` kwarg
+
 ## [0.1.0] - 2026-04-06
 
 ### Added
